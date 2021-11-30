@@ -34,7 +34,7 @@ $(TARGET)	:	$(OBJS)
 	$(CC) $(CFLAGS) $(LDFLAGS) $(ARFS) $(MLXFLAGS) -o $@ $^
 
 .c.o	:
-	$(CC) $(CFLAGS) -I $(LIB_DIR) -I $(MLX_DIR) -I $(INC_DIR) -c $< -o $@ 
+	$(CC) $(CFLAGS) -I $(LIB_DIR) -I $(MLX_DIR) -I $(INC_DIR) -c $< -o $@
 
 
 $(DEBUG)	:	$(OBJS)
