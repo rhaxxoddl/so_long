@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 19:03:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/11/10 23:52:50 by sanjeon          ###   ########.fr       */
+/*   Updated: 2021/11/22 16:23:43 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,6 @@ int	main(void)
 		my_mlx_pixel_put(&img, i, 5, 0x00FF0000);// 붉은색 선을 가로으로 그린다.
 	}
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0);//이미지를 윈도우에 올린다.
-	mlx_key_hook(vars.win, deal_key, (void *)0);
+	mlx_key_hook(vars.win, &deal_key, (void *)0);
 	mlx_loop(vars.mlx);
 }
