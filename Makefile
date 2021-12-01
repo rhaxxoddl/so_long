@@ -17,7 +17,9 @@ DEBUGFLAG	= -fsanitize=address
 LDFLAGS		=	-lc
 MLXFLAGS	=	-L$(MLX_DIR) -l$(MLX_NAME) -framework OpenGL -framework AppKit
 
-SRCS		=	./src/so_long.c ./src/parsing.c
+SRCS		=	./src/so_long.c\
+				 ./src/parsing.c\
+				 ./src/window.c
 SRCS_DIR	=	./src
 OBJS	=	$(SRCS:.c=.o)
 ARFS	=	Libft.a

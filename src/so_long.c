@@ -6,26 +6,11 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 19:03:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/11/30 21:00:57 by sanjeon          ###   ########.fr       */
+/*   Updated: 2021/12/01 09:48:45 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-typedef struct s_data
-{
-	void *img;
-	char *addr;
-	int bits_per_pixel;
-	int line_length;
-	int endian;
-} t_data;
-
-typedef struct s_vars
-{
-	void *mlx;
-	void *win;
-} t_vars;
 
 void my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
@@ -41,9 +26,11 @@ int win_close(t_vars vars)
 	return (0);
 }
 
-int deal_key(int keycode)
+int deal_key(int keycode, t_vars *vars)
 {
 	printf("keycode : %d\n", keycode);
+	if (keycode == 53)
+		close_win(vars->mlx, vars->win);
 	return (0);
 }
 
@@ -64,6 +51,6 @@ int main(void)
 		my_mlx_pixel_put(&img, i, 5, 0x00FF0000); // 붉은색 선을 가로으로 그린다.
 	}
 	mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0); //이미지를 윈도우에 올린다.
-	mlx_key_hook(vars.win, deal_key, 0);
+	mlx_key_hook(vars.win, deal_key, &vars);
 	mlx_loop(vars.mlx);
 }
