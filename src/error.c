@@ -1,19 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   window.c                                           :+:      :+:    :+:   */
+/*   error.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/01 09:36:47 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/12/10 20:57:45 by sanjeon          ###   ########.fr       */
+/*   Created: 2021/12/10 21:21:48 by sanjeon           #+#    #+#             */
+/*   Updated: 2021/12/10 22:35:50 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void close_win(void *mlx_ptr, void *win_ptr)
+void	error(char **map)
 {
-	mlx_destroy_window(mlx_ptr, win_ptr);
-	exit(0);
+	if (map != 0)
+		free_map(map);
+	write(1, "Error\n", 6);
+	exit(1);
+}
+
+void	free_map(char **map)
+{
+	int i;
+	int j;
+
+	i = 0;
+	j = 0;
+	while(map[i] != 0)
+		free(map[i++]);
+	free(map);
 }

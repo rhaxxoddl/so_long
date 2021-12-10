@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 19:03:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/12/03 20:59:54 by sanjeon          ###   ########.fr       */
+/*   Updated: 2021/12/10 22:40:55 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,6 @@ void my_mlx_pixel_put(t_data *data, int x, int y, int color)
 	*(unsigned int *)dst = color;
 }
 
-int win_close(t_vars vars)
-{
-	mlx_destroy_window(vars.mlx, vars.win);
-	return (0);
-}
-
 int deal_key(int keycode, t_vars *vars)
 {
 	printf("keycode : %d\n", keycode);
@@ -34,24 +28,27 @@ int deal_key(int keycode, t_vars *vars)
 	return (0);
 }
 
-int main(void)
+int main(int argc, char **argv)
 {
 	t_vars vars;
 	t_data img;
+	t_sprite sprite;
+	int			fd;
+	char		**map;
 
-
+	map = 0;
+	if (argc != 2)
+		error(map);
+	fd = open(argv[1], O_RDONLY);
+	if (fd == -1)
+		error(map);
+	read_ber(fd, map);
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "so_long");
+	register_sprite(&vars, &sprite);
+	render_all(&vars, &sprite);
 	img.img = mlx_new_image(vars.mlx, 50, 50); // 이미지 instance 생성
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
-	//이미지의 주소 할당
-	// for (int i = 0; i < 100; i++)	
-	// {
-	// 	my_mlx_pixel_put(&img, i, i, 0x00FF0000); // 붉은색 선을 대각선으로 그린다.
-	// 	my_mlx_pixel_put(&img, 5, i, 0x00FF0000); // 붉은색 선을 세로으로 그린다.
-	// 	my_mlx_pixel_put(&img, i, 5, 0x00FF0000); // 붉은색 선을 가로으로 그린다.
-	// }
-	// mlx_put_image_to_window(vars.mlx, vars.win, img.img, 0, 0); //이미지를 윈도우에 올린다.
 	mlx_key_hook(vars.win, deal_key, &vars);
 	mlx_loop(vars.mlx);
 }
