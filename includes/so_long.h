@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:22:03 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/12/10 22:35:57 by sanjeon          ###   ########.fr       */
+/*   Updated: 2021/12/11 23:35:50 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <stdio.h>
+# include <errno.h>
+# include <string.h>
 # include "libft.h"
 # include "mlx.h"
 # include "key_bind.h"

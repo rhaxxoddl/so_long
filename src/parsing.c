@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:30:43 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/12/10 23:16:14 by sanjeon          ###   ########.fr       */
+/*   Updated: 2021/12/11 23:36:33 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ int	read_ber(int fd, char **map)
 	i = 0;
 	if (fd < 0 || fd > OPEN_MAX)
 		error(map);
+	// if (map == 0)
+	// 	map = ft_calloc()
 	while (read(fd, c, 1) == 1)
 	{
 	write(1, "1\n", 2);

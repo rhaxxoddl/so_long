@@ -13,7 +13,7 @@ MLX_DIR		=	./includes/Mlx
 
 AR			= 	ar rc
 CFLAGS		=	-Wall -Wextra -Werror
-DEBUGFLAG	= -fsanitize=address
+DEBUGFLAG	= -g -fsanitize=address
 LDFLAGS		=	-lc
 MLXFLAGS	=	-L$(MLX_DIR) -l$(MLX_NAME) -framework OpenGL -framework AppKit
 
