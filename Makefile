@@ -21,7 +21,9 @@ SRCS		=	./src/so_long.c\
 				 ./src/parsing.c\
 				 ./src/window.c\
 				 ./src/render.c\
-				 ./src/error.c
+				 ./src/error.c\
+				 ./src/get_next_line.c\
+				 ./src/check.c
 SRCS_DIR	=	./src
 OBJS	=	$(SRCS:.c=.o)
 ARFS	=	Libft.a

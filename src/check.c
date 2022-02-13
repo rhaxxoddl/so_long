@@ -6,14 +6,14 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 21:50:27 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/02/13 21:52:10 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/02/13 22:53:41 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 // If map is a rectangular shape return col_length.
-int check_str_shape(char **map_str)
+int check_str_shape(char **map, int *row_length)
 {
 	int col_length;
 	int i;
@@ -21,27 +21,26 @@ int check_str_shape(char **map_str)
 
 	col_length = 0;
 	i = 0;
-	write(1, "good\n", 5);
-	print_map(map_str);
-	while (map_str[i] != 0)
+	while (map[i] != 0)
 	{
 		j = 0;
-		while (map_str[i][j] != 0)
+		while (map[i][j] != 0)
 		{
-			write(1, &map_str[i][j], 1);
+			write(1, &map[i][j], 1);
 			j++;
 		}
 		if (i == 0)
 			col_length = j;
 		else if (j != col_length)
-			error(map_str);
+			error(map);
 		i++;
 	}
+	*row_length = i;
 	return (col_length);
 }
 
 // Check if the edge of the map is a wall.
-void check_wall(char **map_str, int row_length, int col_length)
+void check_wall(char **map, int row_length, int col_length)
 {
 	int i;
 	int j;
@@ -54,12 +53,12 @@ void check_wall(char **map_str, int row_length, int col_length)
 		while (j <= col_length)
 		{
 			if (i == 0 || i == row_length)
-				if (map_str[i][j] != 1)
-					error(map_str);
-			if ((j == 0 || j == col_length) && map_str[i][j] != 1)
-				error(map_str);
-			if (check_char(map_str[i][j]) == 0)
-				error(map_str);
+				if (map[i][j] != 1)
+					error(map);
+			if ((j == 0 || j == col_length) && map[i][j] != 1)
+				error(map);
+			if (check_char(map[i][j]) == 0)
+				error(map);
 			j++;
 		}
 		i++;
