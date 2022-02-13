@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 19:03:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/12/10 22:40:55 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/02/10 16:47:22 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,14 +33,14 @@ int main(int argc, char **argv)
 	t_vars vars;
 	t_data img;
 	t_sprite sprite;
-	int			fd;
-	char		**map;
+	int fd;
+	char **map;
 
 	map = 0;
 	if (argc != 2)
 		error(map);
 	fd = open(argv[1], O_RDONLY);
-	if (fd == -1)
+	if (fd < 0)
 		error(map);
 	read_ber(fd, map);
 	vars.mlx = mlx_init();
