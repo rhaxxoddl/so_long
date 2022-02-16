@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 21:50:27 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/02/16 18:25:00 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/02/16 20:28:59 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void check_wall(char **map, int row_length, int col_length)
 
 	i = 0;
 	j = 0;
-	while (i != 0)
+	while (i < row_length)
 	{
 		j = 0;
-		while (j <= col_length)
+		while (j < col_length)
 		{
 			if (i == 0 || i == row_length)
 				if (map[i][j] != WALL)
@@ -70,16 +70,44 @@ int check_char(char target)
 	char rule_char[6];
 	int i;
 
-	ft_strlcpy(rule_char, RULE_CHAR, 6);
+	ft_strlcpy(rule_char, "01CEP", 6);
 	i = 0;
 	while (rule_char[i] != 0)
 	{
 		if (target == rule_char[i])
-			break;
+			return (1);
 		i++;
 	}
-	if (i == 6)
-		return (0);
-	else
-		return (1);
+	return (0);
+}
+
+void check_element(char **map)
+{
+	int exit_num;
+	int collectible_num;
+	int start_num;
+	int i;
+	int j;
+
+	exit_num = 0;
+	collectible_num = 0;
+	start_num = 0;
+	i = 0;
+	while (map[i] != 0)
+	{
+		j = 0;
+		while (map[i][j] != 0)
+		{
+			if (map[i][j] == EXIT)
+				exit_num++;
+			if (map[i][j] == COLLECTIBLE)
+				collectible_num++;
+			if (map[i][j] == START)
+				start_num++;
+			j++;
+		}
+		i++;
+	}
+	if (exit_num < 1 || collectible_num < 1 || start_num != 1)
+		error(map, "Wrong number of elements!\n");
 }

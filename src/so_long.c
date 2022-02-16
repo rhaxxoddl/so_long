@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 19:03:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/02/16 16:48:09 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/02/16 19:14:14 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,10 @@ int main(int argc, char **argv)
 		error(map, "Failed to open file!\n");
 	parsing(fd, &map);
 	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "so_long");
+	vars.win = mlx_new_window(vars.mlx, 1200, 900, "so_long");
 	register_sprite(&vars, &sprite);
-	render_all(&vars, &sprite);
+	render_init(&vars, &sprite, map);
+	// render_all(&vars, &sprite);
 	img.img = mlx_new_image(vars.mlx, 50, 50); // 이미지 instance 생성
 	img.addr = mlx_get_data_addr(img.img, &img.bits_per_pixel, &img.line_length, &img.endian);
 	mlx_key_hook(vars.win, deal_key, &vars);

@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:22:03 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/02/16 16:18:22 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/02/16 20:22:08 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include "constants.h"
 
 // parsing.c
+void print_map(char **map);
 char**	allocate_map(char *argv);
 void	parsing(int fd, char ***map);
 
@@ -41,9 +42,11 @@ void	close_win(void *mlx_ptr, void *win_ptr);
 // render.c
 void	register_sprite(t_vars *vars, t_sprite *sprite);
 void	render_all(t_vars *vars, t_sprite *sprite);
+void	render_init(t_vars *vars, t_sprite *sprite, char **map);
 
 // check.c
 int		check_str_shape(char **map_str, int *row_length);
 void	check_wall(char **map_str, int row_length, int col_length);
 int		check_char(char target);
+void	check_element(char **map);
 #endif

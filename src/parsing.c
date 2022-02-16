@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:30:43 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/02/16 18:24:14 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/02/16 20:22:57 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,4 +70,5 @@ void parsing(int fd, char ***map)
 	row_length = 0;
 	col_length = check_str_shape(*map, &row_length);
 	check_wall(*map, row_length, col_length);
+	check_element(*map);
 }
