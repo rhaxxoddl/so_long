@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 17:22:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/02/16 19:39:16 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/02/16 21:34:22 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,9 +45,12 @@ void render_init(t_vars *vars, t_sprite *sprite, char **map)
 		{
 			if (map[i][j] == WALL)
 				mlx_put_image_to_window(vars->mlx, vars->win, sprite->wall, 32 * j, 32 * i);
-			// if (map[i][j] == START)
-			// if (map[i][j] == COLLECTIBLE)
-			// if (map[i][j] == EXIT)
+			if (map[i][j] == START)
+				mlx_put_image_to_window(vars->mlx, vars->win, sprite->player, 32 * j, 32 * i);
+			if (map[i][j] == COLLECTIBLE)
+				mlx_put_image_to_window(vars->mlx, vars->win, sprite->feed, 32 * j, 32 * i);
+			if (map[i][j] == EXIT)
+				mlx_put_image_to_window(vars->mlx, vars->win, sprite->door, 32 * j, 32 * i);
 			j++;
 		}
 		i++;

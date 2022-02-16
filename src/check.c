@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 21:50:27 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/02/16 20:28:59 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/02/16 22:23:10 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int check_char(char target)
 	return (0);
 }
 
-void check_element(char **map)
+void check_element(t_data data)
 {
 	int exit_num;
 	int collectible_num;
@@ -93,21 +93,21 @@ void check_element(char **map)
 	collectible_num = 0;
 	start_num = 0;
 	i = 0;
-	while (map[i] != 0)
+	while (data.map[i] != 0)
 	{
 		j = 0;
-		while (map[i][j] != 0)
+		while (data.map[i][j] != 0)
 		{
-			if (map[i][j] == EXIT)
+			if (data.map[i][j] == EXIT)
 				exit_num++;
-			if (map[i][j] == COLLECTIBLE)
+			if (data.map[i][j] == COLLECTIBLE)
 				collectible_num++;
-			if (map[i][j] == START)
+			if (data.map[i][j] == START)
 				start_num++;
 			j++;
 		}
 		i++;
 	}
 	if (exit_num < 1 || collectible_num < 1 || start_num != 1)
-		error(map, "Wrong number of elements!\n");
+		error(data.map, "Wrong number of elements!\n");
 }

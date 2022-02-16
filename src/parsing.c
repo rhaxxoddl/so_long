@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:30:43 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/02/16 20:22:57 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/02/16 22:22:27 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ char **allocate_map(char *argv)
 	return (map);
 }
 
-void parsing(int fd, char ***map)
+void parsing(int fd, t_data data)
 {
 	int row_length;
 	int col_length;
@@ -58,17 +58,17 @@ void parsing(int fd, char ***map)
 	int i;
 
 	i = 0;
-	num = get_next_line(fd, &(*map)[i++]);
+	num = get_next_line(fd, &(data.map)[i++]);
 	while (num == 1)
 	{
-		num = get_next_line(fd, &(*map)[i]);
+		num = get_next_line(fd, &(data.map)[i]);
 		i++;
 	}
-	(*map)[i - 1] = 0;
+	(data.map)[i - 1] = 0;
 	if (num < 0)
-		error(*map, "Failed to get line!\n");
+		error(data.map, "Failed to get line!\n");
 	row_length = 0;
-	col_length = check_str_shape(*map, &row_length);
-	check_wall(*map, row_length, col_length);
-	check_element(*map);
+	col_length = check_str_shape(data.map, &row_length);
+	check_wall(data.map, row_length, col_length);
+	check_element(data);
 }
