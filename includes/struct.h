@@ -22,7 +22,7 @@ typedef struct	s_sprite
 {
 	void	*player;
 	void	*wall;
-	void	*ground;
+	void	*door;
 	void	*enemy;
 	void	*feed;
 }				t_sprite;

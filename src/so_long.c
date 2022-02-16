@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 19:03:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/02/13 22:48:55 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/02/16 16:48:09 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ int main(int argc, char **argv)
 
 	map = 0;
 	if (argc != 2)
-		error(map);
+		error(map, "Doesn't exist map!\n");
 	map = allocate_map(argv[1]);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		error(map);
+		error(map, "Failed to open file!\n");
 	parsing(fd, &map);
 	vars.mlx = mlx_init();
 	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "so_long");

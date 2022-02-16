@@ -3,15 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   key_bind.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/30 20:26:21 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/12/03 17:53:50 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/02/16 16:17:00 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef KEY_BIND_H
-#define KEY_BIND_H
+# define KEY_BIND_H
 
 enum e_keycode
 {

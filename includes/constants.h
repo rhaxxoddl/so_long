@@ -1,34 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/10 21:21:48 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/02/16 16:47:09 by sanjeon          ###   ########.fr       */
+/*   Created: 2022/02/16 16:16:18 by sanjeon           #+#    #+#             */
+/*   Updated: 2022/02/16 16:41:06 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#ifndef CONSTANTS_H
+# define CONSTANTS_H
 
-void error(char **map, char *err_message)
-{
-	if (map != 0)
-		free_map(map);
-	write(1, "Error\n", 6);
-	perror(err_message);
-	exit(1);
-}
-
-void free_map(char **map)
-{
-	int i;
-	int j;
-
-	i = 0;
-	j = 0;
-	while (map[i] != 0)
-		free(map[i++]);
-	free(map);
-}
+# define EMPTY '0'
+# define WALL '1'
+# define COLLECTIBLE 'C'
+# define EXIT 'E'
+# define START 'P'
+# define RULE_CHAR "01CEP"
+#endif

@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:22:03 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/02/13 22:54:24 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/02/16 16:18:22 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,14 @@
 # include "key_bind.h"
 # include "struct.h"
 # include "get_next_line.h"
+# include "constants.h"
 
 // parsing.c
 char**	allocate_map(char *argv);
 void	parsing(int fd, char ***map);
 
 // error.c
-void	error(char **map);
+void	error(char **map, char *err_message);
 void	free_map(char **map);
 
 // window.c
