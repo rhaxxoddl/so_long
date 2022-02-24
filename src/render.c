@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 17:22:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/02/16 21:34:22 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/02/24 08:44:23 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ void print_str(char *str)
 	write(1, "\n", 1);
 }
 
-void render_init(t_vars *vars, t_sprite *sprite, char **map)
+void render_init(t_vars *vars, t_sprite sprite, char **map)
 {
 	printf("render_init\n");
 	int i;
@@ -44,13 +44,13 @@ void render_init(t_vars *vars, t_sprite *sprite, char **map)
 		while (map[i][j] != 0)
 		{
 			if (map[i][j] == WALL)
-				mlx_put_image_to_window(vars->mlx, vars->win, sprite->wall, 32 * j, 32 * i);
-			if (map[i][j] == START)
-				mlx_put_image_to_window(vars->mlx, vars->win, sprite->player, 32 * j, 32 * i);
+				mlx_put_image_to_window(vars->mlx, vars->win, sprite.wall, 32 * j, 32 * i);
+			if (map[i][j] == PLAYER)
+				mlx_put_image_to_window(vars->mlx, vars->win, sprite.player, 32 * j, 32 * i);
 			if (map[i][j] == COLLECTIBLE)
-				mlx_put_image_to_window(vars->mlx, vars->win, sprite->feed, 32 * j, 32 * i);
+				mlx_put_image_to_window(vars->mlx, vars->win, sprite.feed, 32 * j, 32 * i);
 			if (map[i][j] == EXIT)
-				mlx_put_image_to_window(vars->mlx, vars->win, sprite->door, 32 * j, 32 * i);
+				mlx_put_image_to_window(vars->mlx, vars->win, sprite.door, 32 * j, 32 * i);
 			j++;
 		}
 		i++;

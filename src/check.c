@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 21:50:27 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/02/16 22:23:10 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/02/24 08:24:50 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void check_element(t_data data)
 				exit_num++;
 			if (data.map[i][j] == COLLECTIBLE)
 				collectible_num++;
-			if (data.map[i][j] == START)
+			if (data.map[i][j] == PLAYER)
 				start_num++;
 			j++;
 		}

@@ -29,8 +29,16 @@ typedef struct	s_sprite
 
 typedef struct	s_data
 {
-	char	**map;
-	int		player_position[2];
+	char		**map;
+	t_location	player_location;
+	int			num_move;
+	int			score;
 }				t_data;
+
+typedef struct	s_location
+{
+	int		x;
+	int		y;
+}				t_location
 
 #endif
