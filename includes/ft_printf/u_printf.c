@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   u_printf.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/12 17:08:17 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/05/16 17:18:51 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/01 21:05:17 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int					u_print(va_list ap)
 	if (!(str_u = align_d(str_u)))
 		return (0);
 	write(1, str_u, ft_strlen(str_u));
-	if (g_width < ft_strlen(str_u))
+	if (g_width < (int)ft_strlen(str_u))
 		g_len += ft_strlen(str_u);
 	else
 		g_len += g_width;

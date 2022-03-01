@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_printf.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 20:46:00 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/05/16 14:56:14 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/01 20:54:22 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ char		find_type(const char *str, int *len)
 	while (str[*len] != 0)
 	{
 		i = 0;
-		if (ft_strchr(type, str[*len]) >= 0)
+		if (ft_strchr_int(type, str[*len]) >= 0)
 		{
 			return (str[*len]);
 		}
-		else if (ft_strchr(flag, str[*len]) == -1)
+		else if (ft_strchr_int(flag, str[*len]) == -1)
 			return (0);
 		(*len)++;
 	}

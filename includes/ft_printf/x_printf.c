@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   x_printf.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 13:00:21 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/05/16 17:22:50 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/01 21:05:59 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,7 +113,7 @@ int					x_print_sub(char *str_x, int x)
 	if (!(str_x = align_d(str_x)))
 		return (0);
 	write(1, str_x, ft_strlen(str_x));
-	if (g_width < ft_strlen(str_x))
+	if (g_width < (int)ft_strlen(str_x))
 		g_len += ft_strlen(str_x);
 	else
 		g_len += g_width;

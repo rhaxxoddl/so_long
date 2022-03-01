@@ -41,7 +41,7 @@ $(TARGET)	:	$(OBJS)
 	make -C $(PRT_DIR)
 	cp $(LIB_DIR)/*.a ./
 	cp $(MLX_DIR)/*.dylib ./
-	cp $(PTR_DIR)/*.a ./
+	cp $(PRT_DIR)/*.a ./
 	$(CC) $(CFLAGS) $(LDFLAGS) $(ARFS) $(MLXFLAGS) -o $@ $^
 
 .c.o	:
@@ -54,7 +54,7 @@ $(DEBUG)	:	$(OBJS)
 	make -C $(PRT_DIR)
 	cp $(LIB_DIR)/*.a ./
 	cp $(MLX_DIR)/*.dylib ./
-	cp $(PTR_DIR)/*.a ./
+	cp $(PRT_DIR)/*.a ./
 	$(CC) $(CFLAGS) $(LDFLAGS) $(ARFS) $(DEBUGFLAG) $(MLXFLAGS) -o $@ $^
 
 fclean	:	clean
@@ -74,4 +74,4 @@ clean	:
 re		:	fclean all
 
 
-.PHONY	: clean fclean dclean d all re Libft Mlx
+.PHONY	: clean fclean dclean d all re Libft Mlx ft_printf

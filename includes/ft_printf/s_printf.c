@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   s_printf.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 10:20:10 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/05/16 14:56:49 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/01 21:05:31 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int			s_print(va_list ap)
 		str_s = "(null)";
 	if (g_pre > 0 || g_align_left > 0)
 		g_zero = 0;
-	if (g_pre == -1 || g_pre > ft_strlen(str_s))
+	if (g_pre == -1 || g_pre > (int)ft_strlen(str_s))
 		g_pre = ft_strlen(str_s);
 	if (g_width > g_pre)
 		align_s(str_s);

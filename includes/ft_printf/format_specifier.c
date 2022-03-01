@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   format_specifier.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 21:50:43 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/05/16 14:52:56 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/01 20:58:28 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void		set_format(const char **str, int per_idx, int type_idx, va_list ap)
 	temp = (char*)*str;
 	while (i < type_idx)
 	{
-		if (ft_isdigit(temp[i]) == 2)
+		if (ft_isdigit_div0(temp[i]) == 2)
 		{
 			if (temp[i - 1] != '.')
 				g_zero = i;
@@ -42,13 +42,13 @@ void		set_format(const char **str, int per_idx, int type_idx, va_list ap)
 
 void		is_digit(char *temp, int *i)
 {
-	if (ft_isdigit(temp[*i]) == 1)
+	if (ft_isdigit_div0(temp[*i]) == 1)
 	{
 		if (g_pre == 0)
 			g_pre = ft_atoi(&temp[*i]);
 		else
 			g_width = ft_atoi(&temp[*i]);
-		while (ft_isdigit(temp[*i]) > 0)
+		while (ft_isdigit_div0(temp[*i]) > 0)
 			(*i)++;
 	}
 }

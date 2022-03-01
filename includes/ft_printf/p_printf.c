@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   p_printf.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/13 16:31:59 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/05/16 17:14:28 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/01 21:06:16 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int						p_print(va_list ap)
 	if (!(str_p = align_d(str_p)))
 		return (-1);
 	write(1, str_p, ft_strlen(str_p));
-	if (g_width < ft_strlen(str_p))
+	if (g_width < (int)ft_strlen(str_p))
 		g_len += ft_strlen(str_p);
 	else
 		g_len += g_width;

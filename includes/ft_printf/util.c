@@ -3,42 +3,42 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 21:54:13 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/05/16 14:56:40 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/01 21:02:46 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-int					ft_strlen(char *str)
-{
-	int				len;
+// int					ft_strlen(char *str)
+// {
+// 	int				len;
 
-	len = 0;
-	while (str[len] != 0)
-		len++;
-	return (len);
-}
+// 	len = 0;
+// 	while (str[len] != 0)
+// 		len++;
+// 	return (len);
+// }
 
-int					ft_atoi(const char *nptr)
-{
-	int				i;
-	char			*str;
-	unsigned int	num;
+// int					ft_atoi(const char *nptr)
+// {
+// 	int				i;
+// 	char			*str;
+// 	unsigned int	num;
 
-	i = 0;
-	str = (char*)nptr;
-	num = 0;
-	if (!(str[i]) || str[i] < 48 || str[i] > 57)
-		return (-1);
-	while (str[i] && str[i] >= 48 && str[i] <= 57)
-		num = num * 10 + (str[i++] - '0');
-	return (num);
-}
+// 	i = 0;
+// 	str = (char*)nptr;
+// 	num = 0;
+// 	if (!(str[i]) || str[i] < 48 || str[i] > 57)
+// 		return (-1);
+// 	while (str[i] && str[i] >= 48 && str[i] <= 57)
+// 		num = num * 10 + (str[i++] - '0');
+// 	return (num);
+// }
 
-int					ft_isdigit(int c)
+int					ft_isdigit_div0(int c)
 {
 	if (c == 48)
 		return (2);
@@ -48,7 +48,7 @@ int					ft_isdigit(int c)
 		return (0);
 }
 
-int					ft_strchr(char *str, int c)
+int					ft_strchr_int(char *str, int c)
 {
 	int				i;
 
@@ -62,24 +62,24 @@ int					ft_strchr(char *str, int c)
 	return (-1);
 }
 
-char				*ft_strdup(const char *s)
-{
-	int				len;
-	int				i;
-	char			*str;
-	char			*m;
+// char				*ft_strdup(const char *s)
+// {
+// 	int				len;
+// 	int				i;
+// 	char			*str;
+// 	char			*m;
 
-	str = (char*)s;
-	i = 0;
-	len = ft_strlen(str);
-	m = ft_calloc(len + 1, sizeof(char));
-	if (m == 0)
-		return (0);
-	while (str[i])
-	{
-		m[i] = str[i];
-		i++;
-	}
-	m[i] = 0;
-	return (m);
-}
+// 	str = (char*)s;
+// 	i = 0;
+// 	len = ft_strlen(str);
+// 	m = ft_calloc(len + 1, sizeof(char));
+// 	if (m == 0)
+// 		return (0);
+// 	while (str[i])
+// 	{
+// 		m[i] = str[i];
+// 		i++;
+// 	}
+// 	m[i] = 0;
+// 	return (m);
+// }

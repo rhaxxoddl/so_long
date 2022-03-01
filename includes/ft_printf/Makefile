@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+         #
+#    By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/01 19:10:52 by sanjeon           #+#    #+#              #
-#    Updated: 2021/05/16 15:43:46 by sanjeon          ###   ########.fr        #
+#    Updated: 2022/03/01 21:12:03 by sanjeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,10 +15,16 @@ NAME	=	libftprintf.a
 CC		=	gcc
 AR		=	ar rcs
 CF		=	-Wall -Wextra -Werror
+LDFLAGS	=	-lc
+
+LIB_DIR	=	Libft
+LIB_DIR	=	../Libft
+
+ARFS	=	Libft.a
 
 SRC		=	ft_printf.c\
 			format_specifier.c\
-			util.c util2.c util3.c\
+			util.c util3.c\
 			d_printf.c\
 			u_printf.c\
 			c_printf.c\
@@ -30,15 +36,20 @@ OBJ		=	$(SRC:.c=.o)
 all		:	$(NAME)
 
 $(NAME)	:	$(OBJ)
-	$(AR) $@ $(OBJ)
+	make -C $(LIB_DIR)
+	cp $(LIB_DIR)/*.a ./
+	$(AR) $(LDFLAGS) $(ARFS) $@ $(OBJ)
 
 %.o		:	%.c
-	$(CC) $(CF) -c $<
+	$(CC) $(CF) -I $(LIB_DIR) -c $<
 
 clean	:
+	rm -f $(ARFS)
 	rm -f $(OBJ)
 
 fclean	:		clean
-	rm -f $(NAME) 
+	rm -f $(NAME)
+	rm -f $(ARFS)
+	make -C $(LIB_DIR) clean
 
 re		:		fclean all

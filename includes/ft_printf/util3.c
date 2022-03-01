@@ -3,74 +3,74 @@
 /*                                                        :::      ::::::::   */
 /*   util3.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/05/05 10:03:25 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/05/16 14:59:45 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/01 21:03:29 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
 
-char				*ft_strjoin(char *s1, char *s2)
-{
-	char			*str;
-	size_t			i;
-	size_t			j;
+// char				*ft_strjoin(char *s1, char *s2)
+// {
+// 	char			*str;
+// 	size_t			i;
+// 	size_t			j;
 
-	if (s1 == 0 || s2 == 0)
-		return (0);
-	i = 0;
-	j = 0;
-	str = (char*)ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
-	if (str == 0)
-		return (0);
-	while (s1[i])
-	{
-		str[i] = (char)s1[i];
-		i++;
-	}
-	while (s2[j])
-	{
-		str[i + j] = (char)s2[j];
-		j++;
-	}
-	return (str);
-}
+// 	if (s1 == 0 || s2 == 0)
+// 		return (0);
+// 	i = 0;
+// 	j = 0;
+// 	str = (char*)ft_calloc(ft_strlen(s1) + ft_strlen(s2) + 1, sizeof(char));
+// 	if (str == 0)
+// 		return (0);
+// 	while (s1[i])
+// 	{
+// 		str[i] = (char)s1[i];
+// 		i++;
+// 	}
+// 	while (s2[j])
+// 	{
+// 		str[i + j] = (char)s2[j];
+// 		j++;
+// 	}
+// 	return (str);
+// }
 
-void				*ft_memmove(void *dest, const void *src, size_t n)
-{
-	unsigned char	temp;
-	unsigned int	i;
+// void				*ft_memmove(void *dest, const void *src, size_t n)
+// {
+// 	unsigned char	temp;
+// 	unsigned int	i;
 
-	i = 0;
-	if (dest == 0 && src == 0)
-		return (0);
-	if (src >= dest)
-		while (i < n)
-		{
-			temp = ((unsigned char*)src)[i];
-			((unsigned char*)dest)[i++] = temp;
-		}
-	else
-		while (n)
-		{
-			temp = ((unsigned char*)src)[n - 1];
-			((unsigned char*)dest)[n - 1] = temp;
-			n--;
-		}
-	return (dest);
-}
+// 	i = 0;
+// 	if (dest == 0 && src == 0)
+// 		return (0);
+// 	if (src >= dest)
+// 		while (i < n)
+// 		{
+// 			temp = ((unsigned char*)src)[i];
+// 			((unsigned char*)dest)[i++] = temp;
+// 		}
+// 	else
+// 		while (n)
+// 		{
+// 			temp = ((unsigned char*)src)[n - 1];
+// 			((unsigned char*)dest)[n - 1] = temp;
+// 			n--;
+// 		}
+// 	return (dest);
+// }
 
-void				*ft_memset(void *s, int c, size_t n)
-{
-	unsigned char	*value;
+// void				*ft_memset(void *s, int c, size_t n)
+// {
+// 	unsigned char	*value;
 
-	value = (unsigned char*)s;
-	while (n--)
-		*(unsigned char*)s++ = (unsigned char)c;
-	return (value);
-}
+// 	value = (unsigned char*)s;
+// 	while (n--)
+// 		*(unsigned char*)s++ = (unsigned char)c;
+// 	return (value);
+// }
 
 char				*ft_utoa(unsigned int n)
 {
