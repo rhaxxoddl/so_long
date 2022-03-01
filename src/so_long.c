@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 19:03:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/01 23:07:17 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/01 23:45:17 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	game_clear(t_vars *vars, t_location d_move)
 	ft_printf("Score : %d\n", vars->score);
 	ft_printf("Movement : %d\n", vars->num_move);
 	free_map(vars->map);
-	close_win(vars->mlx, vars->win);
+	close_win(vars);
 }
 
 void	vars_init(t_vars *vars, char *argv)
@@ -32,16 +32,11 @@ void	vars_init(t_vars *vars, char *argv)
 	vars->win = mlx_new_window(vars->mlx, 1200, 900, "so_long");
 }
 
-// int deal_mouse()
-// {
-
-// }
-
 int deal_key(int keycode, t_vars *vars)
 {
 	printf("keycode : %d\n", keycode);
 	if (keycode == ESC)
-		close_win(vars->mlx, vars->win);
+		close_win(vars);
 	if (keycode == KEY_UP)
 		move_up(vars);
 	if (keycode == KEY_DOWN)
@@ -68,7 +63,7 @@ int main(int argc, char **argv)
 	register_sprite(&vars);
 	display_init(&vars);
 	mlx_key_hook(vars.win, deal_key, &vars);
-	// mlx_mouse_hook (vars.win, int (*funct_ptr)(), void *param );
+	mlx_hook(vars.win, ON_DESTROY, 0, close_win, &vars);
 	mlx_loop(vars.mlx);
 	return (0);
 }

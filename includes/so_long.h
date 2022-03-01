@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:22:03 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/01 17:36:11 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/01 23:45:33 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,5 +59,5 @@ void	move_down(t_vars *vars);
 int		move_player_in_map(t_vars *vars, t_location d_move);
 
 // window.c
-void	close_win(void *mlx_ptr, void *win_ptr);
+int	close_win(t_vars *vars);
 #endif
