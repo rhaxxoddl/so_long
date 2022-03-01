@@ -6,37 +6,11 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/04/30 21:54:13 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/01 21:02:46 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/01 21:48:23 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "printf.h"
-
-// int					ft_strlen(char *str)
-// {
-// 	int				len;
-
-// 	len = 0;
-// 	while (str[len] != 0)
-// 		len++;
-// 	return (len);
-// }
-
-// int					ft_atoi(const char *nptr)
-// {
-// 	int				i;
-// 	char			*str;
-// 	unsigned int	num;
-
-// 	i = 0;
-// 	str = (char*)nptr;
-// 	num = 0;
-// 	if (!(str[i]) || str[i] < 48 || str[i] > 57)
-// 		return (-1);
-// 	while (str[i] && str[i] >= 48 && str[i] <= 57)
-// 		num = num * 10 + (str[i++] - '0');
-// 	return (num);
-// }
 
 int					ft_isdigit_div0(int c)
 {
@@ -62,24 +36,39 @@ int					ft_strchr_int(char *str, int c)
 	return (-1);
 }
 
-// char				*ft_strdup(const char *s)
-// {
-// 	int				len;
-// 	int				i;
-// 	char			*str;
-// 	char			*m;
+char				*ft_utoa(unsigned int n)
+{
+	int				len;
+	char			temp[11];
+	char			*output;
+	size_t			i;
 
-// 	str = (char*)s;
-// 	i = 0;
-// 	len = ft_strlen(str);
-// 	m = ft_calloc(len + 1, sizeof(char));
-// 	if (m == 0)
-// 		return (0);
-// 	while (str[i])
-// 	{
-// 		m[i] = str[i];
-// 		i++;
-// 	}
-// 	m[i] = 0;
-// 	return (m);
-// }
+	len = 0;
+	if (n == 0)
+		return (output = ft_strdup("0"));
+	while (n != 0)
+	{
+		temp[len++] = n % 10 + '0';
+		n = n / 10;
+	}
+	temp[len] = 0;
+	if (!(output = (char*)ft_calloc(len + 1, sizeof(char))))
+		return (0);
+	i = 0;
+	while (temp[i])
+		output[--len] = temp[i++];
+	return (output);
+}
+
+int					count_16(unsigned long long x)
+{
+	int				count;
+
+	count = 0;
+	while (x > 0)
+	{
+		x = x / 16;
+		count++;
+	}
+	return (count);
+}

@@ -6,7 +6,7 @@
 #    By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/01 19:10:52 by sanjeon           #+#    #+#              #
-#    Updated: 2022/03/01 21:12:03 by sanjeon          ###   ########.fr        #
+#    Updated: 2022/03/01 21:48:32 by sanjeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ ARFS	=	Libft.a
 
 SRC		=	ft_printf.c\
 			format_specifier.c\
-			util.c util3.c\
+			util.c\
 			d_printf.c\
 			u_printf.c\
 			c_printf.c\
