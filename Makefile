@@ -10,6 +10,8 @@ LIB_DIR		=	./includes/Libft
 MLX_NAME	=	Mlx
 MLX_DIR		=	./includes/Mlx
 
+PRT_NAME	=	ft_printf
+PRT_DIR		=	./includes/ft_printf
 
 AR			= 	ar rc
 CFLAGS		=	-Wall -Wextra -Werror
@@ -20,13 +22,14 @@ MLXFLAGS	=	-L$(MLX_DIR) -l$(MLX_NAME) -framework OpenGL -framework AppKit
 SRCS		=	./src/so_long.c\
 				 ./src/parsing.c\
 				 ./src/window.c\
-				 ./src/render.c\
+				 ./src/display.c\
 				 ./src/error.c\
-				 ./src/get_next_line.c\
-				 ./src/check.c
+				 ./includes/Get_next_line/get_next_line.c\
+				 ./src/check.c\
+				 ./src/player_control.c
 SRCS_DIR	=	./src
 OBJS	=	$(SRCS:.c=.o)
-ARFS	=	Libft.a
+ARFS	=	Libft.a libftprintf.a
 
 all		:	$(TARGET)
 
@@ -35,34 +38,35 @@ d		:	$(DEBUG)
 $(TARGET)	:	$(OBJS)
 	make -C $(LIB_DIR)
 	make -C $(MLX_DIR)
+	make -C $(PRT_DIR)
 	cp $(LIB_DIR)/*.a ./
 	cp $(MLX_DIR)/*.dylib ./
+	cp $(PTR_DIR)/*.a ./
 	$(CC) $(CFLAGS) $(LDFLAGS) $(ARFS) $(MLXFLAGS) -o $@ $^
 
 .c.o	:
-	$(CC) $(CFLAGS) -I $(LIB_DIR) -I $(MLX_DIR) -I $(INC_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) -I $(LIB_DIR) -I $(MLX_DIR) -I $(PRT_DIR) -I $(INC_DIR) -c $< -o $@
 
 
 $(DEBUG)	:	$(OBJS)
 	make -C $(LIB_DIR)
 	make -C $(MLX_DIR)
+	make -C $(PRT_DIR)
 	cp $(LIB_DIR)/*.a ./
 	cp $(MLX_DIR)/*.dylib ./
+	cp $(PTR_DIR)/*.a ./
 	$(CC) $(CFLAGS) $(LDFLAGS) $(ARFS) $(DEBUGFLAG) $(MLXFLAGS) -o $@ $^
 
 fclean	:	clean
 	rm -f $(TARGET)
-	rm -f Libft.a
+	rm -f *.a
 	rm -f libmlx.dylib
 	make -C $(LIB_DIR) clean
 	make -C $(MLX_DIR) clean
+	make -C $(PRT_DIR) clean
 
-dclean	:	clean
+dclean	:	fclean
 	rm -f $(DEBUG)
-	rm -f Libft.a
-	rm -f libmlx.dylib
-	make -C $(LIB_DIR) clean
-	make -C $(MLX_DIR) clean
 
 clean	:
 	rm -f $(OBJS)

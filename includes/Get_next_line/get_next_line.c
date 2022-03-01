@@ -6,32 +6,11 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 05:08:01 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/02/13 23:03:31 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/01 17:15:27 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-// size_t			ft_strlen(char *s)
-// {
-// 	size_t		len;
-
-// 	len = 0;
-// 	while (s[len])
-// 		len++;
-// 	return (len);
-// }
-
-// char			*ft_strchr(const char *d, int c)
-// {
-// 	while (*d || *d == (char)c)
-// 	{
-// 		if (*d == (char)c)
-// 			return ((char*)d);
-// 		d++;
-// 	}
-// 	return (0);
-// }
 
 int out_line(char *buf, char *nl, char **backup, char **line)
 {
