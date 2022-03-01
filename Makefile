@@ -61,9 +61,9 @@ fclean	:	clean
 	rm -f $(TARGET)
 	rm -f *.a
 	rm -f libmlx.dylib
-	make -C $(LIB_DIR) clean
+	make -C $(LIB_DIR) fclean
 	make -C $(MLX_DIR) clean
-	make -C $(PRT_DIR) clean
+	make -C $(PRT_DIR) fclean
 
 dclean	:	fclean
 	rm -f $(DEBUG)

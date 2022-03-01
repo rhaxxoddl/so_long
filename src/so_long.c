@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 19:03:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/01 17:30:01 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/01 22:06:17 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,13 @@ void	game_clear(t_vars *vars, t_location d_move)
 	ft_printf("Movement : %d\n", vars->num_move);
 	free_map(vars->map);
 	close_win(vars->mlx, vars->win);
+}
+
+void	vars_init(t_vars *vars)
+{
+	vars->map = 0;
+	vars->score = 0;
+	vars->num_move = 0;
 }
 
 int deal_key(int keycode, t_vars *vars)
@@ -43,7 +50,7 @@ int main(int argc, char **argv)
 	t_vars vars;
 	int fd;
 
-	vars.map = 0;
+	vars_init(&vars);
 	if (argc != 2)
 		error(vars.map, "Doesn't exist map!\n");
 	vars.map = allocate_map(argv[1]);
@@ -57,4 +64,5 @@ int main(int argc, char **argv)
 	display_init(&vars);
 	mlx_key_hook(vars.win, deal_key, &vars);
 	mlx_loop(vars.mlx);
+	return (0);
 }

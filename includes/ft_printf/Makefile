@@ -6,7 +6,7 @@
 #    By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/05/01 19:10:52 by sanjeon           #+#    #+#              #
-#    Updated: 2022/03/01 21:48:32 by sanjeon          ###   ########.fr        #
+#    Updated: 2022/03/01 22:53:21 by sanjeon          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,6 @@ NAME	=	libftprintf.a
 CC		=	gcc
 AR		=	ar rcs
 CF		=	-Wall -Wextra -Werror
-LDFLAGS	=	-lc
 
 LIB_DIR	=	Libft
 LIB_DIR	=	../Libft
@@ -38,7 +37,7 @@ all		:	$(NAME)
 $(NAME)	:	$(OBJ)
 	make -C $(LIB_DIR)
 	cp $(LIB_DIR)/*.a ./
-	$(AR) $(LDFLAGS) $(ARFS) $@ $(OBJ)
+	$(AR) $@ $(OBJ)
 
 %.o		:	%.c
 	$(CC) $(CF) -I $(LIB_DIR) -c $<
@@ -50,6 +49,6 @@ clean	:
 fclean	:		clean
 	rm -f $(NAME)
 	rm -f $(ARFS)
-	make -C $(LIB_DIR) clean
+	make -C $(LIB_DIR) fclean
 
 re		:		fclean all
