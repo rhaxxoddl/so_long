@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:30:43 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/02 00:14:43 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/02 12:36:36 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,8 @@ void parsing(int fd, t_vars vars)
 		num = get_next_line(fd, &(vars.map)[i]);
 		i++;
 	}
-	system("leaks so_long");
-	(vars.map)[i - 1] = 0; // leaks here
-	system("leaks so_long");
+	free((vars.map)[i - 1]);
+	(vars.map)[i - 1] = 0;
 	if (num < 0)
 		error(vars.map, "Failed to get line!\n");
 	row_length = 0;
