@@ -6,30 +6,18 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:30:43 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/02 12:36:36 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/02 12:58:14 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void print_map(char **map)
+char	**allocate_map(char *argv)
 {
-	for (int i = 0; map[i] != 0; i++)
-	{
-		printf("map[i] : %d\n", i);
-		for (int j = 0; map[i][j] != 0; j++)
-		{
-			write(1, &map[i][j], 1);
-		}
-		write(1, "\n", 1);
-	}
-}
-char **allocate_map(char *argv)
-{
-	char buf[2];
-	char **map;
-	int count;
-	int fd;
+	char	buf[2];
+	char	**map;
+	int		count;
+	int		fd;
 
 	buf[0] = 0;
 	buf[1] = 0;
@@ -50,12 +38,12 @@ char **allocate_map(char *argv)
 	return (map);
 }
 
-void parsing(int fd, t_vars vars)
+void	parsing(int fd, t_vars vars)
 {
-	int row_length;
-	int col_length;
-	int num;
-	int i;
+	int	row_length;
+	int	col_length;
+	int	num;
+	int	i;
 
 	i = 0;
 	num = get_next_line(fd, &(vars.map)[i++]);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:22:03 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/01 23:45:33 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/02 15:59:20 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ int		check_str_shape(char **map_str, int *row_length);
 void	check_wall(char **map_str, int row_length, int col_length);
 int		check_char(char target);
 void	check_element(t_vars vars);
+void	counting_element(t_vars vars, int *exit, int *collectible, int *start);
 
 // display.c
 void	register_sprite(t_vars *vars);
@@ -47,7 +48,6 @@ void	free_map(char **map);
 void	game_clear(t_vars *vars, t_location d_move);
 
 // parsing.c
-void print_map(char **map);
 char**	allocate_map(char *argv);
 void	parsing(int fd, t_vars vars);
 

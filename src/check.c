@@ -3,22 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   check.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 21:50:27 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/01 15:28:03 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/02 16:00:00 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 // If map is a rectangular shape return col_length.
-int check_str_shape(char **map, int *row_length)
+int	check_str_shape(char **map, int *row_length)
 {
-	write(1, "check_shape\n", 12);
-	int col_length;
-	int i;
-	int j;
+	int	col_length;
+	int	i;
+	int	j;
 
 	col_length = 0;
 	i = 0;
@@ -38,11 +37,10 @@ int check_str_shape(char **map, int *row_length)
 }
 
 // Check if the edge of the map is a wall.
-void check_wall(char **map, int row_length, int col_length)
+void	check_wall(char **map, int row_length, int col_length)
 {
-	write(1, "check_wall\n", 11);
-	int i;
-	int j;
+	int	i;
+	int	j;
 
 	i = 0;
 	j = 0;
@@ -65,10 +63,10 @@ void check_wall(char **map, int row_length, int col_length)
 }
 
 // If target belong to "01CEP", return 1. else return 0;
-int check_char(char target)
+int	check_char(char target)
 {
-	char rule_char[6];
-	int i;
+	char	rule_char[6];
+	int		i;
 
 	ft_strlcpy(rule_char, "01CEP", 6);
 	i = 0;
@@ -81,17 +79,25 @@ int check_char(char target)
 	return (0);
 }
 
-void check_element(t_vars vars)
+void	check_element(t_vars vars)
 {
-	int exit_num;
-	int collectible_num;
-	int start_num;
-	int i;
-	int j;
+	int	exit_num;
+	int	collectible_num;
+	int	start_num;
 
 	exit_num = 0;
 	collectible_num = 0;
 	start_num = 0;
+	counting_element(vars, &exit_num, &collectible_num, &start_num);
+	if (exit_num < 1 || collectible_num < 1 || start_num != 1)
+		error(vars.map, "Wrong number of elements!\n");
+}
+
+void	counting_element(t_vars vars, int *exit, int *collectible, int *start)
+{
+	int	i;
+	int j;
+
 	i = 0;
 	while (vars.map[i] != 0)
 	{
@@ -99,15 +105,13 @@ void check_element(t_vars vars)
 		while (vars.map[i][j] != 0)
 		{
 			if (vars.map[i][j] == EXIT)
-				exit_num++;
+				(*exit)++;
 			if (vars.map[i][j] == COLLECTIBLE)
-				collectible_num++;
+				(*collectible)++;
 			if (vars.map[i][j] == PLAYER)
-				start_num++;
+				(*start)++;
 			j++;
 		}
 		i++;
 	}
-	if (exit_num < 1 || collectible_num < 1 || start_num != 1)
-		error(vars.map, "Wrong number of elements!\n");
 }
