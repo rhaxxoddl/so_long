@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 21:37:24 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/02 12:57:20 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/02 17:23:33 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ int	move_player_in_map(t_vars *vars, t_location d_move)
 	else if (vars->map[(*p_x) + d_move.x][*p_y + d_move.y] == EXIT)
 		game_clear(vars, d_move);
 	apply_player_movement(vars, d_move);
-	ft_printf("Movement : %d\n", vars->num_move);
+	printf("Movement : %d\n", vars->num_move);
 	return (1);
 }

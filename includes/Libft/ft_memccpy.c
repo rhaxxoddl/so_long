@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_memccpy.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/25 17:46:24 by sanjeon           #+#    #+#             */
-/*   Updated: 2020/12/25 19:34:40 by sanjeon          ###   ########.fr       */
+/*   Updated: 2021/10/25 14:23:07 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,9 @@ void	*ft_memccpy(void *dest, const void *src, int c, size_t n)
 {
 	while (n--)
 	{
-		*(unsigned char*)dest++ = *(const unsigned char*)src++;
-		if (*(unsigned char*)(dest - sizeof(unsigned char)) == (unsigned char)c)
+		*(unsigned char *)dest++ = *(const unsigned char *)src++;
+		if (*(unsigned char *)(dest - sizeof(unsigned char)) ==
+		(unsigned char)c)
 			return (dest);
 	}
 	return (0);

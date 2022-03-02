@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strmapi.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/03 17:13:42 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/01/03 17:36:00 by sanjeon          ###   ########.fr       */
+/*   Updated: 2021/10/25 14:19:24 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
 	if (!s || !f)
 		return (0);
 	i = 0;
-	output = (char*)ft_calloc(ft_strlen(s) + 1, sizeof(char));
+	output = (char *)ft_calloc(ft_strlen(s) + 1, sizeof(char));
 	if (!output)
 		return (0);
 	while (i < ft_strlen(s))

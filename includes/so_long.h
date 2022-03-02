@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:22:03 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/02 17:02:22 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/02 17:23:53 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@
 # include "struct.h"
 # include "get_next_line.h"
 # include "constants.h"
-# include "printf.h"
 
 // check.c
 int		check_str_shape(char **map_str, int *row_length);

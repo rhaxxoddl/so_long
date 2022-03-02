@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.43seoul.kr>       +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 11:07:47 by sanjeon           #+#    #+#             */
-/*   Updated: 2020/12/31 12:57:27 by sanjeon          ###   ########.fr       */
+/*   Updated: 2021/10/25 14:14:13 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t		ft_strlcat(char *dest, char *src, size_t destsize)
+size_t	ft_strlcat(char *dest, char *src, size_t destsize)
 {
 	int		i;
 	size_t	dest_len;

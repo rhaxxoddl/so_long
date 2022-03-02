@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strrchr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/26 12:37:53 by sanjeon           #+#    #+#             */
-/*   Updated: 2020/12/31 11:46:15 by sanjeon          ###   ########.fr       */
+/*   Updated: 2021/10/25 14:19:44 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ char	*ft_strrchr(const char *d, int c)
 	while (d_len >= 0)
 	{
 		if ((char)d[d_len] == (char)c)
-			return ((char*)&d[d_len]);
+			return ((char *)&d[d_len]);
 		d_len--;
 	}
 	return (0);

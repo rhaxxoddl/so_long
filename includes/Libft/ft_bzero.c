@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/12/23 21:41:36 by sanjeon           #+#    #+#             */
-/*   Updated: 2020/12/25 19:34:02 by sanjeon          ###   ########.fr       */
+/*   Updated: 2021/10/25 14:05:26 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,5 +15,5 @@
 void	ft_bzero(void *s, size_t n)
 {
 	while (n--)
-		*(unsigned char*)s++ = 0;
+		*(unsigned char *)s++ = 0;
 }

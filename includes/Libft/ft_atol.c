@@ -1,28 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/05 09:01:07 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/10/25 14:09:36 by sanjeon          ###   ########.fr       */
+/*   Created: 2021/07/18 11:09:41 by sanjeon           #+#    #+#             */
+/*   Updated: 2021/10/25 16:46:27 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+long long	ft_atol(const char *nptr)
 {
-	t_list	*p;
+	int			i;
+	int			sign;
+	char		*str;
+	long long	num;
 
-	if (!lst)
-		return ;
-	if (!(*lst))
+	i = 0;
+	str = (char *)nptr;
+	num = 0;
+	sign = -1;
+	while (ft_isspace(str[i]) == 1)
+		i++;
+	if (nptr[i] == '-' || nptr[i] == '+')
 	{
-		*lst = new;
-		return ;
+		if (nptr[i] == '-')
+			sign *= -1;
+		i++;
 	}
-	p = ft_lstlast(*lst);
-	p->next = new;
+	while (ft_isdigit(str[i]) == 1)
+		num = num * 10 - str[i++] + '0';
+	return (sign * num);
 }

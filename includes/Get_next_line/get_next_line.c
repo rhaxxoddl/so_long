@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/12 05:08:01 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/01 17:15:27 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/02 19:33:18 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 int out_line(char *buf, char *nl, char **backup, char **line)
 {
-	if ((*line = ft_substr(buf, 0, nl - buf)) == 0)
+	*line = ft_substr(buf, 0, nl - buf);
+	if (*line == 0)
 	{
 		free(buf);
 		return (-1);
 	}
-	if ((*backup = ft_substr(nl, 1, ft_strlen(nl))) == 0)
+	*backup = ft_substr(nl, 1, ft_strlen(nl));
+	if (*backup == 0)
 	{
 		free(buf);
 		free(*line);
@@ -37,11 +39,13 @@ char *add_buf(char *buf)
 	len = BUFFER_SIZE + 1;
 	if (buf == 0)
 	{
-		if ((temp = (char *)ft_calloc(len, sizeof(char))) == 0)
+		temp = (char *)ft_calloc(len, sizeof(char));
+		if (temp == 0)
 			return (0);
 		return (temp);
 	}
-	if ((temp = (char *)ft_calloc(ft_strlen(buf) + len, sizeof(char))) == 0)
+	temp = (char *)ft_calloc(ft_strlen(buf) + len, sizeof(char));
+	if (temp == 0)
 	{
 		free(buf);
 		return (0);
@@ -51,22 +55,33 @@ char *add_buf(char *buf)
 	return (temp);
 }
 
-int find_new_line(int fd, char **line, char *buf, char **backup)
+int	find_new_line(int fd, char **line, char *buf, char **backup)
 {
-	char *new_line;
-	int r;
+	char	*new_line;
+	int		r;
 
 	r = 0;
 	while (buf == 0 || (new_line = ft_strchr(buf, '\n')) == 0)
 	{
-		if ((buf = add_buf(buf)) == 0)
+		buf = add_buf(buf);
+		if (buf == 0)
 			return (-1);
-		if ((r = read(fd, buf + ft_strlen(buf), BUFFER_SIZE)) <= 0)
+		r = read(fd, buf + ft_strlen(buf), BUFFER_SIZE);
+		if (r <= 0)
 		{
-			if (r < 0 || (*line = ft_substr(buf, 0, ft_strlen(buf))) == 0)
+			if (r < 0)
 			{
 				free(buf);
 				return (-1);
+			}
+			else
+			{
+				*line = ft_substr(buf, 0, ft_strlen(buf));
+				if (*line == 0)
+				{
+					free(buf);
+					return (-1);
+				}
 			}
 			free(buf);
 			buf = 0;
@@ -86,7 +101,8 @@ int get_next_line(int fd, char **line)
 	buf = 0;
 	if (backup[fd] != 0)
 	{
-		if ((buf = ft_substr(backup[fd], 0, ft_strlen(backup[fd]))) == 0)
+		buf = ft_substr(backup[fd], 0, ft_strlen(backup[fd]));
+		if (buf == 0)
 			return (-1);
 		free(backup[fd]);
 		backup[fd] = 0;

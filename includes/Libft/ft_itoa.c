@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/02 23:46:10 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/01/03 17:07:14 by sanjeon          ###   ########.fr       */
+/*   Updated: 2021/10/25 15:13:27 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int			minus(char *output, int len, int sign)
+int	minus(char *output, int len, int sign)
 {
 	if (sign < 0)
 	{
@@ -22,7 +22,7 @@ int			minus(char *output, int len, int sign)
 	return (len);
 }
 
-int			change(char *temp, int len, int n)
+int	change(char *temp, int len, int n)
 {
 	while (n != 0)
 	{
@@ -33,7 +33,20 @@ int			change(char *temp, int len, int n)
 	return (len);
 }
 
-char		*ft_itoa(int n)
+char	*malloc_output(int *len, int sign, char *temp, int n)
+{
+	char	*output;
+
+	output = 0;
+	*len = change(temp, *len, n);
+	if (sign < 0)
+		output = (char *)ft_calloc(*len + 2, sizeof(char));
+	else
+		output = (char *)ft_calloc(*len + 1, sizeof(char));
+	return (output);
+}
+
+char	*ft_itoa(int n)
 {
 	int		len;
 	char	temp[11];
@@ -52,8 +65,8 @@ char		*ft_itoa(int n)
 		n = -n;
 		sign = -1;
 	}
-	len = change(temp, len, n);
-	if (!(output = (char*)ft_calloc(sign < 0 ? len + 2 : len + 1, 1)))
+	output = malloc_output(&len, sign, temp, n);
+	if (output == 0)
 		return (0);
 	len = minus(output, len, sign);
 	i = 0;

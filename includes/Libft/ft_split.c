@@ -3,19 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/01/01 22:34:24 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/01/08 01:18:10 by sanjeon          ###   ########.fr       */
+/*   Updated: 2021/10/25 14:25:04 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t		array_size(char const *s, char c)
+static size_t	array_size(char const *s, char c)
 {
-	size_t			count;
-	size_t			i;
+	size_t	count;
+	size_t	i;
 
 	count = 0;
 	i = 0;
@@ -31,9 +31,9 @@ static size_t		array_size(char const *s, char c)
 	return (count);
 }
 
-static char			**free_split(char **output, size_t i)
+static char	**free_split(char **output, size_t i)
 {
-	size_t			idx;
+	size_t	idx;
 
 	idx = 0;
 	while (idx < i)
@@ -42,11 +42,11 @@ static char			**free_split(char **output, size_t i)
 	return (0);
 }
 
-char				**array_split(char const *s, char c, char **output)
+char	**array_split(char const *s, char c, char **output)
 {
-	size_t			count;
-	size_t			i;
-	size_t			output_i;
+	size_t	count;
+	size_t	i;
+	size_t	output_i;
 
 	output_i = 0;
 	i = 0;
@@ -70,13 +70,14 @@ char				**array_split(char const *s, char c, char **output)
 	return (output);
 }
 
-char				**ft_split(char const *s, char c)
+char	**ft_split(char const *s, char c)
 {
-	char			**output;
+	char	**output;
 
 	if (s == 0)
 		return (0);
-	if (!(output = (char**)ft_calloc(array_size(s, c) + 1, sizeof(char*))))
+	output = (char **)ft_calloc(array_size(s, c) + 1, sizeof(char *));
+	if (output == 0)
 		return (0);
 	output = array_split(s, c, output);
 	return (output);

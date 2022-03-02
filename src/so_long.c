@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 19:03:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/02 16:37:53 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/02 17:23:11 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,9 +15,9 @@
 void	game_clear(t_vars *vars, t_location d_move)
 {
 	apply_player_movement(vars, d_move);
-	ft_printf("\\*\\*\\*\\*\\*CLEAR*/*/*/*/*/\n");
-	ft_printf("Score : %d\n", vars->score);
-	ft_printf("Movement : %d\n", vars->num_move);
+	printf("\\*\\*\\*\\*\\*CLEAR*/*/*/*/*/\n");
+	printf("Score : %d\n", vars->score);
+	printf("Movement : %d\n", vars->num_move);
 	free_map(vars->map);
 	close_win(vars);
 }

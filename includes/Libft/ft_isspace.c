@@ -1,28 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstadd_back.c                                   :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/01/05 09:01:07 by sanjeon           #+#    #+#             */
-/*   Updated: 2021/10/25 14:09:36 by sanjeon          ###   ########.fr       */
+/*   Created: 2021/08/20 08:41:26 by sanjeon           #+#    #+#             */
+/*   Updated: 2021/10/25 14:08:04 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstadd_back(t_list **lst, t_list *new)
+int	ft_isspace(int c)
 {
-	t_list	*p;
-
-	if (!lst)
-		return ;
-	if (!(*lst))
-	{
-		*lst = new;
-		return ;
-	}
-	p = ft_lstlast(*lst);
-	p->next = new;
+	if ((c >= 8 && c <= 13) || c == 32)
+		return (1);
+	else
+		return (0);
 }
