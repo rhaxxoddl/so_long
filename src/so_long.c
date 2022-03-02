@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 19:03:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/02 12:50:07 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/02 16:37:53 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ void	game_clear(t_vars *vars, t_location d_move)
 
 void	vars_init(t_vars *vars, char *argv)
 {
+	int	map_width;
+	int	map_height;
+
+	map_width = 0;
+	map_height = 0;
 	vars->map = 0;
 	vars->score = 0;
 	vars->num_move = 0;
@@ -34,7 +39,6 @@ void	vars_init(t_vars *vars, char *argv)
 
 int	deal_key(int keycode, t_vars *vars)
 {
-	printf("keycode : %d\n", keycode);
 	if (keycode == ESC)
 		close_win(vars);
 	if (keycode == KEY_UP)

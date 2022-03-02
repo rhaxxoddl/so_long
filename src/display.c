@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 17:22:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/02 16:00:41 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/02 16:17:30 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ void	apply_player_movement(t_vars *vars, t_location d_move)
 	p_y = &(vars->player_location.y);
 	vars->map[*p_x][*p_y] = 0;
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->sprite.ground,
-			X(*p_x), Y(*p_y));
+		X(*p_x), Y(*p_y));
 	vars->map[*p_x + d_move.x][*p_y + d_move.y] = PLAYER;
 	(*p_x) += d_move.x;
 	(*p_y) += d_move.y;
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->sprite.player,
-			X(*p_x), Y(*p_y));
+		X(*p_x), Y(*p_y));
 }

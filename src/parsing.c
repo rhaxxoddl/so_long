@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:30:43 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/02 12:58:14 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/02 16:30:03 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,7 @@ void	parsing(int fd, t_vars vars)
 	num = get_next_line(fd, &(vars.map)[i++]);
 	while (num == 1)
 	{
-		num = get_next_line(fd, &(vars.map)[i]);
-		i++;
+		num = get_next_line(fd, &(vars.map)[i++]);
 	}
 	free((vars.map)[i - 1]);
 	(vars.map)[i - 1] = 0;

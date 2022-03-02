@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 21:50:27 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/02 16:00:00 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/02 16:15:19 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ void	check_element(t_vars vars)
 void	counting_element(t_vars vars, int *exit, int *collectible, int *start)
 {
 	int	i;
-	int j;
+	int	j;
 
 	i = 0;
 	while (vars.map[i] != 0)
