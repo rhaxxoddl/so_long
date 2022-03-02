@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 17:22:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/02 16:17:30 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/02 17:07:04 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,24 +42,34 @@ void	display_init(t_vars *vars)
 		y = 0;
 		while (vars->map[x][y] != 0)
 		{
-			if (vars->map[x][y] == WALL)
-				mlx_put_image_to_window(vars->mlx, vars->win, vars->sprite.wall, X(x), Y(y));
-			if (vars->map[x][y] == PLAYER)
-			{
-				mlx_put_image_to_window(vars->mlx, vars->win, vars->sprite.player, X(x), Y(y));
-				vars->player_location.x = x;
-				vars->player_location.y = y;
-			}
-			if (vars->map[x][y] == COLLECTIBLE)
-				mlx_put_image_to_window(vars->mlx, vars->win, vars->sprite.feed, X(x), Y(y));
-			if (vars->map[x][y] == EXIT)
-				mlx_put_image_to_window(vars->mlx, vars->win, vars->sprite.door, X(x), Y(y));
-			if (vars->map[x][y] == EMPTY)
-				mlx_put_image_to_window(vars->mlx, vars->win, vars->sprite.ground, X(x), Y(y));
-			y++;
+			y += display_by_element(vars, x, y);
 		}
 		x++;
 	}
+}
+
+int	display_by_element(t_vars *vars, int x, int y)
+{
+	if (vars->map[x][y] == WALL)
+		mlx_put_image_to_window(vars->mlx, vars->win,
+			vars->sprite.wall, x * PIXEL, y * PIXEL);
+	if (vars->map[x][y] == PLAYER)
+	{
+		mlx_put_image_to_window(vars->mlx, vars->win,
+			vars->sprite.player, x * PIXEL, y * PIXEL);
+		vars->player_location.x = x;
+		vars->player_location.y = y;
+	}
+	if (vars->map[x][y] == COLLECTIBLE)
+		mlx_put_image_to_window(vars->mlx, vars->win,
+			vars->sprite.feed, x * PIXEL, y * PIXEL);
+	if (vars->map[x][y] == EXIT)
+		mlx_put_image_to_window(vars->mlx, vars->win,
+			vars->sprite.door, x * PIXEL, y * PIXEL);
+	if (vars->map[x][y] == EMPTY)
+		mlx_put_image_to_window(vars->mlx, vars->win,
+			vars->sprite.ground, x * PIXEL, y * PIXEL);
+	return (1);
 }
 
 void	apply_player_movement(t_vars *vars, t_location d_move)
@@ -71,10 +81,10 @@ void	apply_player_movement(t_vars *vars, t_location d_move)
 	p_y = &(vars->player_location.y);
 	vars->map[*p_x][*p_y] = 0;
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->sprite.ground,
-		X(*p_x), Y(*p_y));
+		(*p_x) * PIXEL, (*p_y) * PIXEL);
 	vars->map[*p_x + d_move.x][*p_y + d_move.y] = PLAYER;
 	(*p_x) += d_move.x;
 	(*p_y) += d_move.y;
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->sprite.player,
-		X(*p_x), Y(*p_y));
+		(*p_x) * PIXEL, (*p_y) * PIXEL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   constants.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 16:16:18 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/01 23:35:50 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/02 17:04:53 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,4 @@
 # define ON_DESTROY 17
 
 # define PIXEL 32
-# define X(x) x * PIXEL
-# define Y(y) y * PIXEL
 #endif

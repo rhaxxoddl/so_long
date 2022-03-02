@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:22:03 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/02 15:59:20 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/02 17:02:22 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ void	counting_element(t_vars vars, int *exit, int *collectible, int *start);
 // display.c
 void	register_sprite(t_vars *vars);
 void	display_init(t_vars *vars);
+int		display_by_element(t_vars *vars, int x, int y);
 void	apply_player_movement(t_vars *vars, t_location d_move);
 
 // error.c
@@ -48,7 +49,7 @@ void	free_map(char **map);
 void	game_clear(t_vars *vars, t_location d_move);
 
 // parsing.c
-char**	allocate_map(char *argv);
+char	**allocate_map(char *argv);
 void	parsing(int fd, t_vars vars);
 
 // player_control.c
@@ -59,5 +60,5 @@ void	move_down(t_vars *vars);
 int		move_player_in_map(t_vars *vars, t_location d_move);
 
 // window.c
-int	close_win(t_vars *vars);
+int		close_win(t_vars *vars);
 #endif
