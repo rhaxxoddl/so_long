@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:22:03 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/03 14:07:12 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/03 16:36:28 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,10 +47,10 @@ void	free_map(char **map);
 void	game_clear(t_vars *vars, t_location d_move);
 
 // parsing.c
-char	**allocate_map(char *argv);
-void	parsing(int fd, t_vars vars);
-int		get_next_line(int fd, char **line);
+void	parsing(int fd, t_vars *vars);
+int		get_map_oneline(int fd, char **line);
 int		find_new_line(char **line, char *buf);
+void	line_trans_2D(int fd, t_vars *vars);
 
 // player_control.c
 void	move_left(t_vars *vars);
@@ -62,6 +62,4 @@ int		move_player_in_map(t_vars *vars, t_location d_move);
 // window.c
 int		close_win(t_vars *vars);
 
-// new_get_next_line.c
-int	get_next_line(int fd, char **line);
 #endif

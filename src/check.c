@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 21:50:27 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/03 14:33:54 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/03 16:52:09 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,13 @@ int	check_map_shape(char **map, int *row_length)
 		j = 0;
 		while (map[i][j] != 0)
 			j++;
+		// if (j == 0 || map[i + 1] != 0)
+		// 	error(map, "Not rectangular shape\n");
 		if (i == 0)
 			col_length = j;
 		if (j != col_length)
 			error(map, "Not rectangular shape\n");
+		printf("j : %d\n", j);
 		i++;
 	}
 	*row_length = i;

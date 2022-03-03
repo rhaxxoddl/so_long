@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 19:03:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/03 14:27:29 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/03 16:35:42 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	game_clear(t_vars *vars, t_location d_move)
 	close_win(vars);
 }
 
-void	vars_init(t_vars *vars, char *argv)
+void	vars_init(t_vars *vars)
 {
 	int	map_width;
 	int	map_height;
@@ -32,7 +32,7 @@ void	vars_init(t_vars *vars, char *argv)
 	vars->map = 0;
 	vars->score = 0;
 	vars->num_move = 0;
-	vars->map = allocate_map(argv);
+	vars->map = 0;
 	vars->mlx = mlx_init();
 	vars->win = mlx_new_window(vars->mlx, 1200, 900, "so_long");
 }
@@ -62,8 +62,8 @@ int	main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		error(vars.map, "Failed to open file!\n");
-	vars_init(&vars, argv[1]);
-	parsing(fd, vars);
+	vars_init(&vars);
+	parsing(fd, &vars);
 	register_sprite(&vars);
 	display_init(&vars);
 	mlx_key_hook(vars.win, deal_key, &vars);
