@@ -6,14 +6,14 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 21:50:27 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/02 16:15:19 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/03 14:33:54 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 // If map is a rectangular shape return col_length.
-int	check_str_shape(char **map, int *row_length)
+int	check_map_shape(char **map, int *row_length)
 {
 	int	col_length;
 	int	i;
