@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:22:03 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/02 17:23:53 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/02 21:26:29 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 # include "mlx.h"
 # include "key_bind.h"
 # include "struct.h"
-# include "get_next_line.h"
+// # include "get_next_line.h"
 # include "constants.h"
 
 // check.c
@@ -60,4 +60,7 @@ int		move_player_in_map(t_vars *vars, t_location d_move);
 
 // window.c
 int		close_win(t_vars *vars);
+
+// new_get_next_line.c
+int	get_next_line(int fd, char **line);
 #endif
