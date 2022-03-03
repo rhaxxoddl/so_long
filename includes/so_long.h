@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:22:03 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/02 21:26:29 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/03 13:39:58 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@
 # include "mlx.h"
 # include "key_bind.h"
 # include "struct.h"
-// # include "get_next_line.h"
 # include "constants.h"
 
 // check.c
@@ -50,6 +49,8 @@ void	game_clear(t_vars *vars, t_location d_move);
 // parsing.c
 char	**allocate_map(char *argv);
 void	parsing(int fd, t_vars vars);
+int		get_next_line(int fd, char **line);
+int		find_new_line(char **line, char *buf);
 
 // player_control.c
 void	move_left(t_vars *vars);

@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:30:43 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/03 12:35:09 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/03 13:43:10 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	parsing(int fd, t_vars vars)
 	int	col_length;
 	int	num;
 	int	i;
-	
+
 	i = 0;
 	num = get_next_line(fd, &vars.map[i++]);
 	while (num == 1)
@@ -59,4 +59,52 @@ void	parsing(int fd, t_vars vars)
 	col_length = check_str_shape(vars.map, &row_length);
 	check_wall(vars.map, row_length, col_length);
 	check_element(vars);
+}
+
+int	find_new_line(char **line, char *buf)
+{
+	char	*temp;
+
+	if ((*line) != 0)
+	{
+		temp = ft_strjoin(*line, buf);
+		if (temp == 0)
+			return (0);
+		free(*line);
+		*line = temp;
+	}
+	else
+	{
+		*line = ft_strdup(buf);
+		if (*line == 0)
+			return (0);
+	}
+	return (1);
+}
+
+int	get_next_line(int fd, char **line)
+{
+	char	*buf;
+	int		r;
+	int		n;
+
+	buf = (char *)ft_calloc(2, sizeof(char));
+	*line = 0;
+	if (fd < 0 || fd > OPEN_MAX || line == 0 || buf == 0)
+		return (-1);
+	r = read(fd, buf, 1);
+	n = (int)ft_strchr(buf, '\n');
+	while (r > 0 && n == 0)
+	{
+		if (!(find_new_line(line, buf)))
+			return (-1);
+		r = read(fd, buf, 1);
+		n = (int)ft_strchr(buf, '\n');
+	}
+	if (r < 0)
+		return (-1);
+	else if (r == 0)
+		return (0);
+	else
+		return (1);
 }
