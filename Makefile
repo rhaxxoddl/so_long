@@ -22,7 +22,8 @@ SRCS		=	./src/so_long.c\
 				 ./src/display.c\
 				 ./src/error.c\
 				 ./src/check.c\
-				 ./src/player_control.c
+				 ./src/player_control.c\
+				 ./src/judgment
 SRCS_DIR	=	./src
 OBJS	=	$(SRCS:.c=.o)
 ARFS	=	Libft.a

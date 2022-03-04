@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:22:03 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/03 16:36:28 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/04 19:49:22 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,9 @@ void	apply_player_movement(t_vars *vars, t_location d_move);
 void	error(char **map, char *err_message);
 void	free_map(char **map);
 
-// so_long.c
+// judgment.c
 void	game_clear(t_vars *vars, t_location d_move);
+int		all_collectible(t_vars vars);
 
 // parsing.c
 void	parsing(int fd, t_vars *vars);

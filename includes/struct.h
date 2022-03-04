@@ -31,11 +31,12 @@ typedef struct s_vars
 {
 	void		*mlx;
 	void		*win;
+	t_sprite	sprite;
+	int			total_collectible;
 	char		**map;
 	t_location	player_location;
 	int			num_move;
 	int			score;
-	t_sprite	sprite;
 }				t_vars;
 
 #endif

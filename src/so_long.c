@@ -6,32 +6,17 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 19:03:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/03 16:35:42 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/04 19:51:01 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	game_clear(t_vars *vars, t_location d_move)
-{
-	apply_player_movement(vars, d_move);
-	printf("\\*\\*\\*\\*\\*CLEAR*/*/*/*/*/\n");
-	printf("Score : %d\n", vars->score);
-	printf("Movement : %d\n", vars->num_move);
-	free_map(vars->map);
-	close_win(vars);
-}
-
 void	vars_init(t_vars *vars)
 {
-	int	map_width;
-	int	map_height;
-
-	map_width = 0;
-	map_height = 0;
-	vars->map = 0;
 	vars->score = 0;
 	vars->num_move = 0;
+	vars->total_collectible = 0;
 	vars->map = 0;
 	vars->mlx = mlx_init();
 	vars->win = mlx_new_window(vars->mlx, 1200, 900, "so_long");

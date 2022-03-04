@@ -6,37 +6,11 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:30:43 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/03 16:36:37 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/04 19:52:36 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-// char	**allocate_map(char *argv)
-// {
-// 	char	buf[2];
-// 	char	**map;
-// 	int		count;
-// 	int		fd;
-
-// 	buf[0] = 0;
-// 	buf[1] = 0;
-// 	count = 0;
-// 	if (argv != 0)
-// 		fd = open(argv, O_RDONLY);
-// 	else
-// 		return (0);
-// 	if (fd < 3)
-// 		return (0);
-// 	while (read(fd, buf, 1))
-// 	{
-// 		if (buf[0] == '\n')
-// 			count++;
-// 	}
-// 	close(fd);
-// 	map = (char **)ft_calloc(sizeof(char *), count + 1);
-// 	return (map);
-// }
 
 void	parsing(int fd, t_vars *vars)
 {
@@ -54,10 +28,16 @@ void	parsing(int fd, t_vars *vars)
 void	line_trans_2D(int fd, t_vars *vars)
 {
 	char	*line;
+	char	*double_newline;
 	
 	line = 0;
+	double_newline = 0;
 	if (fd < 3 || get_map_oneline(fd, &line) != 1)
 		error(vars->map, "Failed to get map in one line!\n");
+	if (double_newline != 0)
+	{
+		
+	}
 	vars->map = ft_split(line, '\n');
 	if (vars->map == 0)
 		error(vars->map, "vars.map is zero page!\n");
