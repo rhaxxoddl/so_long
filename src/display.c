@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 17:22:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/02 17:07:04 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/05 15:13:55 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,54 +35,60 @@ void	display_init(t_vars *vars)
 {
 	int	x;
 	int	y;
+	int	screen_width;
+	int	screen_height;
 
 	x = 0;
+	mlx_get_screen_size(vars->mlx, &screen_width, &screen_height);
+	if (screen_width >= vars->map_size.x && screen_height >= vars->map_size.y)
+		vars->win = mlx_new_window(vars->mlx,
+				vars->map_size.x * PIXEL, vars->map_size.y * PIXEL, "so_long");
 	while (vars->map[x] != 0)
 	{
 		y = 0;
 		while (vars->map[x][y] != 0)
 		{
-			y += display_by_element(vars, x, y);
+			display_by_element(vars, x, y);
+			y++;
 		}
 		x++;
 	}
 }
 
-int	display_by_element(t_vars *vars, int x, int y)
+void	display_by_element(t_vars *vars, int x, int y)
 {
 	if (vars->map[x][y] == WALL)
 		mlx_put_image_to_window(vars->mlx, vars->win,
-			vars->sprite.wall, x * PIXEL, y * PIXEL);
+			vars->sprite.wall, y * PIXEL, x * PIXEL);
 	if (vars->map[x][y] == PLAYER)
 	{
 		mlx_put_image_to_window(vars->mlx, vars->win,
-			vars->sprite.player, x * PIXEL, y * PIXEL);
-		vars->player_location.x = x;
-		vars->player_location.y = y;
+			vars->sprite.player, y * PIXEL, x * PIXEL);
+		vars->player_location.x = y;
+		vars->player_location.y = x;
 	}
 	if (vars->map[x][y] == COLLECTIBLE)
 		mlx_put_image_to_window(vars->mlx, vars->win,
-			vars->sprite.feed, x * PIXEL, y * PIXEL);
+			vars->sprite.feed, y * PIXEL, x * PIXEL);
 	if (vars->map[x][y] == EXIT)
 		mlx_put_image_to_window(vars->mlx, vars->win,
-			vars->sprite.door, x * PIXEL, y * PIXEL);
+			vars->sprite.door, y * PIXEL, x * PIXEL);
 	if (vars->map[x][y] == EMPTY)
 		mlx_put_image_to_window(vars->mlx, vars->win,
-			vars->sprite.ground, x * PIXEL, y * PIXEL);
-	return (1);
+			vars->sprite.ground, y * PIXEL, x * PIXEL);
 }
 
-void	apply_player_movement(t_vars *vars, t_location d_move)
+void	apply_player_movement(t_vars *vars, t_vector d_move)
 {
 	int	*p_x;
 	int	*p_y;
 
 	p_x = &(vars->player_location.x);
 	p_y = &(vars->player_location.y);
-	vars->map[*p_x][*p_y] = 0;
+	vars->map[*p_y][*p_x] = 0;
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->sprite.ground,
 		(*p_x) * PIXEL, (*p_y) * PIXEL);
-	vars->map[*p_x + d_move.x][*p_y + d_move.y] = PLAYER;
+	vars->map[*p_y + d_move.y][*p_x + d_move.x] = PLAYER;
 	(*p_x) += d_move.x;
 	(*p_y) += d_move.y;
 	mlx_put_image_to_window(vars->mlx, vars->win, vars->sprite.player,

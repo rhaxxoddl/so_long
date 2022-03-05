@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 21:37:24 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/04 19:50:28 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/05 15:15:19 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	move_left(t_vars *vars)
 {
-	t_location	distance_move;
+	t_vector	distance_move;
 
 	distance_move.x = -1;
 	distance_move.y = 0;
@@ -23,7 +23,7 @@ void	move_left(t_vars *vars)
 
 void	move_right(t_vars *vars)
 {
-	t_location	distance_move;
+	t_vector	distance_move;
 
 	distance_move.x = 1;
 	distance_move.y = 0;
@@ -32,7 +32,7 @@ void	move_right(t_vars *vars)
 
 void	move_up(t_vars *vars)
 {
-	t_location	distance_move;
+	t_vector	distance_move;
 
 	distance_move.x = 0;
 	distance_move.y = -1;
@@ -41,7 +41,7 @@ void	move_up(t_vars *vars)
 
 void	move_down(t_vars *vars)
 {
-	t_location	distance_move;
+	t_vector	distance_move;
 
 	distance_move.x = 0;
 	distance_move.y = 1;
@@ -52,7 +52,7 @@ void	move_down(t_vars *vars)
 // and the change is displayed on the screen.
 // return 1 if player can move.
 // return 0 if player can't move.
-int	move_player_in_map(t_vars *vars, t_location d_move)
+int	move_player_in_map(t_vars *vars, t_vector d_move)
 {
 	int	*p_x;
 	int	*p_y;
@@ -62,12 +62,12 @@ int	move_player_in_map(t_vars *vars, t_location d_move)
 	if (vars == 0)
 		error(vars->map, "Nothing game vars!\n");
 	if (d_move.x == 0 && d_move.y == 0)
-		error(vars->map, "distance_move is 0\n");
-	if (vars->map[(*p_x) + d_move.x][*p_y + d_move.y] == WALL)
 		return (0);
-	else if (vars->map[(*p_x) + d_move.x][*p_y + d_move.y] == COLLECTIBLE)
+	if (vars->map[*p_y + d_move.y][*p_x + d_move.x] == WALL)
+		return (0);
+	else if (vars->map[*p_y + d_move.y][*p_x + d_move.x] == COLLECTIBLE)
 		(vars->score)++;
-	else if (vars->map[(*p_x) + d_move.x][*p_y + d_move.y] == EXIT)
+	else if (vars->map[*p_y + d_move.y][*p_x + d_move.x] == EXIT)
 	{
 		if (all_collectible(*vars) == 1)
 			game_clear(vars, d_move);

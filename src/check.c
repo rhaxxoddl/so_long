@@ -6,20 +6,18 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 21:50:27 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/05 10:56:21 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/05 13:49:51 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 // If map is a rectangular shape return col_length.
-int	check_map_shape(char **map, int *row_length)
+void	check_map_shape(char **map, int *row_length, int *col_length)
 {
-	int	col_length;
 	int	i;
 	int	j;
 
-	col_length = 0;
 	i = 0;
 	while (map[i] != 0)
 	{
@@ -27,13 +25,12 @@ int	check_map_shape(char **map, int *row_length)
 		while (map[i][j] != 0)
 			j++;
 		if (i == 0)
-			col_length = j;
-		if (j != col_length)
+			*col_length = j;
+		if (j != *col_length)
 			error(map, "Map is not rectangular shape\n");
 		i++;
 	}
 	*row_length = i;
-	return (col_length);
 }
 
 // Check if the edge of the map is a wall.
@@ -92,7 +89,6 @@ void	check_element(t_vars *vars)
 	if (exit_num < 1 || collectible_num < 1 || start_num != 1)
 		error(vars->map, "Wrong number of elements!\n");
 	vars->total_collectible = collectible_num;
-	
 }
 
 void	counting_element(t_vars vars, int *exit, int *collectible, int *start)

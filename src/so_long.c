@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 19:03:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/04 19:51:01 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/05 12:24:29 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,9 @@ void	vars_init(t_vars *vars)
 	vars->total_collectible = 0;
 	vars->map = 0;
 	vars->mlx = mlx_init();
-	vars->win = mlx_new_window(vars->mlx, 1200, 900, "so_long");
+	vars->map_size.x = 0;
+	vars->map_size.y = 0;
+	vars->win = 0;
 }
 
 int	deal_key(int keycode, t_vars *vars)

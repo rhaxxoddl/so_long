@@ -3,15 +3,6 @@
 
 # include "so_long.h"
 
-typedef struct s_img
-{
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
-}				t_img;
-
 typedef struct s_sprite
 {
 	void	*player;
@@ -21,11 +12,11 @@ typedef struct s_sprite
 	void	*feed;
 }				t_sprite;
 
-typedef struct s_location
+typedef struct s_vector
 {
 	int		x;
 	int		y;
-}				t_location;
+}				t_vector;
 
 typedef struct s_vars
 {
@@ -33,8 +24,9 @@ typedef struct s_vars
 	void		*win;
 	t_sprite	sprite;
 	int			total_collectible;
+	t_vector	map_size;
 	char		**map;
-	t_location	player_location;
+	t_vector	player_location;
 	int			num_move;
 	int			score;
 }				t_vars;
