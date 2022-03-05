@@ -36,7 +36,8 @@ $(TARGET)	:	$(OBJS)
 	make -C $(LIB_DIR)
 	make -C $(MLX_DIR)
 	cp $(LIB_DIR)/*.a ./
-	cp $(MLX_DIR)/*.dylib ./
+	# cp $(MLX_DIR)/*.dylib ./
+	cp $(MLX_DIR)/*.a ./
 	$(CC) $(CFLAGS) $(LDFLAGS) $(ARFS) $(MLXFLAGS) -o $@ $^
 
 .c.o	:
@@ -47,7 +48,8 @@ $(DEBUG)	:	$(OBJS)
 	make -C $(LIB_DIR)
 	make -C $(MLX_DIR)
 	cp $(LIB_DIR)/*.a ./
-	cp $(MLX_DIR)/*.dylib ./
+	# cp $(MLX_DIR)/*.dylib ./
+	cp $(MLX_DIR)/*.a ./
 	$(CC) $(CFLAGS) $(LDFLAGS) $(ARFS) $(DEBUGFLAG) $(MLXFLAGS) -o $@ $^
 
 fclean	:	clean
