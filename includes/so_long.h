@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:22:03 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/04 19:49:22 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/05 10:56:49 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 int		check_map_shape(char **map_str, int *row_length);
 void	check_wall(char **map_str, int row_length, int col_length);
 int		check_char(char target);
-void	check_element(t_vars vars);
+void	check_element(t_vars *vars);
 void	counting_element(t_vars vars, int *exit, int *collectible, int *start);
 
 // display.c

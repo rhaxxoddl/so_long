@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 21:50:27 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/03 16:52:09 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/05 10:56:21 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,13 +26,10 @@ int	check_map_shape(char **map, int *row_length)
 		j = 0;
 		while (map[i][j] != 0)
 			j++;
-		// if (j == 0 || map[i + 1] != 0)
-		// 	error(map, "Not rectangular shape\n");
 		if (i == 0)
 			col_length = j;
 		if (j != col_length)
-			error(map, "Not rectangular shape\n");
-		printf("j : %d\n", j);
+			error(map, "Map is not rectangular shape\n");
 		i++;
 	}
 	*row_length = i;
@@ -54,9 +51,9 @@ void	check_wall(char **map, int row_length, int col_length)
 		{
 			if (i == 0 || i == row_length)
 				if (map[i][j] != WALL)
-					error(map, "Incorrect wall!\n");
+					error(map, "Incorrect wall in map!\n");
 			if ((j == 0 || j == col_length) && map[i][j] != WALL)
-				error(map, "Incorrect wall!\n");
+				error(map, "Incorrect wall in map!\n");
 			if (check_char(map[i][j]) == 0)
 				error(map, "Incorrect element of map!\n");
 			j++;
@@ -82,7 +79,7 @@ int	check_char(char target)
 	return (0);
 }
 
-void	check_element(t_vars vars)
+void	check_element(t_vars *vars)
 {
 	int	exit_num;
 	int	collectible_num;
@@ -91,9 +88,11 @@ void	check_element(t_vars vars)
 	exit_num = 0;
 	collectible_num = 0;
 	start_num = 0;
-	counting_element(vars, &exit_num, &collectible_num, &start_num);
+	counting_element(*vars, &exit_num, &collectible_num, &start_num);
 	if (exit_num < 1 || collectible_num < 1 || start_num != 1)
-		error(vars.map, "Wrong number of elements!\n");
+		error(vars->map, "Wrong number of elements!\n");
+	vars->total_collectible = collectible_num;
+	
 }
 
 void	counting_element(t_vars vars, int *exit, int *collectible, int *start)
