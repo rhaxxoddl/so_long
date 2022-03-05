@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 17:22:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/05 15:13:55 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/05 15:33:42 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,11 @@ void	display_init(t_vars *vars)
 
 	x = 0;
 	mlx_get_screen_size(vars->mlx, &screen_width, &screen_height);
-	if (screen_width >= vars->map_size.x && screen_height >= vars->map_size.y)
-		vars->win = mlx_new_window(vars->mlx,
-				vars->map_size.x * PIXEL, vars->map_size.y * PIXEL, "so_long");
+	if (screen_width < vars->map_size.x || screen_height < vars->map_size.y)
+		error(vars->map,
+			"The size of the map is too large to be displayed on the screen.");
+	vars->win = mlx_new_window(vars->mlx,
+			vars->map_size.x, vars->map_size.y, "so_long");
 	while (vars->map[x] != 0)
 	{
 		y = 0;

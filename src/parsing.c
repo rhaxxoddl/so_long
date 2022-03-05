@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:30:43 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/05 15:14:34 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/05 15:28:37 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,9 @@ void	parsing(int fd, t_vars *vars)
 
 	line_trans_2D(fd, vars);
 	check_map_shape(vars->map, &row_length, &col_length);
-	vars->map_size.x = col_length;
-	vars->map_size.y = row_length;
+	vars->map_size.x = col_length * PIXEL;
+	vars->map_size.y = row_length * PIXEL;
+	printf("x : %d\ny : %d\n", vars->map_size.x, vars->map_size.y);
 	check_wall(vars->map, row_length, col_length);
 	check_element(vars);
 }
