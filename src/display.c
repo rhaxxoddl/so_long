@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 17:22:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/05 17:36:31 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/06 14:57:31 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ void	display_init(t_vars *vars)
 	x = 0;
 	screen_width = 2500;
 	screen_height = 2500;
-	// mlx_get_screen_size(vars->mlx, &screen_width, &screen_height);
+	if (get_display_resolution(vars, &screen_width, &screen_height) != 0)
+		error(vars->map, "Failed to get screen resolution.");
 	if (screen_width < vars->map_size.x || screen_height < vars->map_size.y)
 		error(vars->map,
 			"The size of the map is too large to be displayed on the screen.");

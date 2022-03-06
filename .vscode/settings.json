@@ -1,6 +1,8 @@
 {
   "files.associations": {
     "__config": "c",
-    "libft.h": "c"
+    "libft.h": "c",
+    "stdio.h": "c",
+    "cstdio": "c"
   }
 }

@@ -1,35 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   get_resolution.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/12/10 21:21:48 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/06 15:18:18 by sanjeon          ###   ########.fr       */
+/*   Created: 2022/03/06 13:16:06 by sanjeon           #+#    #+#             */
+/*   Updated: 2022/03/06 13:52:33 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <errno.h>
+#include "mlx_mms.h"
 #include "so_long.h"
 
-void	error(char **map, char *err_message)
+int	get_display_resolution(t_vars *vars, int *width, int *height)
 {
-	if (map != 0)
-		free_map(map);
-	write(1, "Error\n", 6);
-	perror(err_message);
-	exit(1);
-}
-
-void	free_map(char **map)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	j = 0;
-	while (map[i] != 0)
-		free(map[i++]);
-	free(map);
+	if (mlx_get_screen_size(vars->mlx, width, height) == 0)
+		return (0);
+	return (1);
 }

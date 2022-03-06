@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:22:03 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/05 14:36:08 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/06 14:38:52 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <stdio.h>
-# include <errno.h>
 # include <string.h>
 # include "libft.h"
 # include "mlx.h"
@@ -42,6 +41,9 @@ void	apply_player_movement(t_vars *vars, t_vector d_move);
 // error.c
 void	error(char **map, char *err_message);
 void	free_map(char **map);
+
+// get_resolution.c
+int		get_display_resolution(t_vars *vars, int *width, int *height);
 
 // judgment.c
 void	game_clear(t_vars *vars, t_vector d_move);

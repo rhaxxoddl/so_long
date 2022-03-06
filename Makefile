@@ -10,11 +10,14 @@ LIB_DIR		=	./includes/Libft
 MLX_NAME	=	Mlx
 MLX_DIR		=	./includes/Mlx
 
+MLXM_NAME	= Mlxm
+MLXM_DIR	=	./includes/Mlx_mms
+
 AR			= 	ar rc
 CFLAGS		=	-Wall -Wextra -Werror
 DEBUGFLAG	= -g -fsanitize=address
 LDFLAGS		=	-lc
-MLXFLAGS	=	-L$(MLX_DIR) -l$(MLX_NAME) -framework OpenGL -framework AppKit
+MLXFLAGS	=	-L $(MLX_DIR) -l $(MLX_NAME) -L $(MLXM_DIR) -l $(MLXM_NAME) -framework OpenGL -framework AppKit
 
 SRCS		=	./src/so_long.c\
 				 ./src/parsing.c\
@@ -23,7 +26,8 @@ SRCS		=	./src/so_long.c\
 				 ./src/error.c\
 				 ./src/check.c\
 				 ./src/player_control.c\
-				 ./src/judgment.c
+				 ./src/judgment.c\
+				 ./src/get_resolution.c
 SRCS_DIR	=	./src
 OBJS	=	$(SRCS:.c=.o)
 ARFS	=	Libft.a
@@ -35,27 +39,29 @@ d		:	$(DEBUG)
 $(TARGET)	:	$(OBJS)
 	make -C $(LIB_DIR)
 	make -C $(MLX_DIR)
+	make -C $(MLXM_DIR)
 	cp $(LIB_DIR)/*.a ./
-	# cp $(MLX_DIR)/*.dylib ./
+	cp $(MLXM_DIR)/*.dylib ./
 	cp $(MLX_DIR)/*.a ./
 	$(CC) $(CFLAGS) $(LDFLAGS) $(ARFS) $(MLXFLAGS) -o $@ $^
 
 .c.o	:
-	$(CC) $(CFLAGS) -I $(LIB_DIR) -I $(MLX_DIR) -I $(INC_DIR) -c $< -o $@
+	$(CC) $(CFLAGS) -I $(LIB_DIR) -I $(MLX_DIR) -I $(MLXM_DIR) -I $(INC_DIR) -c $< -o $@
 
 
 $(DEBUG)	:	$(OBJS)
 	make -C $(LIB_DIR)
 	make -C $(MLX_DIR)
+	make -C $(MLXM_DIR)
 	cp $(LIB_DIR)/*.a ./
-	# cp $(MLX_DIR)/*.dylib ./
+	cp $(MLXM_DIR)/*.dylib ./
 	cp $(MLX_DIR)/*.a ./
 	$(CC) $(CFLAGS) $(LDFLAGS) $(ARFS) $(DEBUGFLAG) $(MLXFLAGS) -o $@ $^
 
 fclean	:	clean
 	rm -f $(TARGET)
 	rm -f *.a
-	rm -f libmlx.dylib
+	rm -f *.dylib
 	make -C $(LIB_DIR) fclean
 	make -C $(MLX_DIR) clean
 
@@ -64,8 +70,11 @@ dclean	:	fclean
 
 clean	:
 	rm -f $(OBJS)
+	make -C $(LIB_DIR) clean
+	make -C $(MLX_DIR) clean
+	make -C $(MLXM_DIR) clean
 
 re		:	fclean all
 
 
-.PHONY	: clean fclean dclean d all re Libft Mlx ft_printf
+.PHONY	: clean fclean dclean d all re Libft Mlx
