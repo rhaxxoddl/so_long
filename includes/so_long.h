@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:22:03 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/06 14:38:52 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/06 20:46:41 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	display_by_element(t_vars *vars, int x, int y);
 void	apply_player_movement(t_vars *vars, t_vector d_move);
 
 // error.c
+void	p_error(char **map, char *err_message);
 void	error(char **map, char *err_message);
 void	free_map(char **map);
 
@@ -52,7 +53,7 @@ int		all_collectible(t_vars vars);
 // parsing.c
 void	parsing(int fd, t_vars *vars);
 int		get_map_oneline(int fd, char **line);
-int		find_new_line(char **line, char *buf);
+int		buf_attach_line(char **line, char *buf);
 void	line_trans_2D(int fd, t_vars *vars);
 
 // player_control.c
@@ -60,7 +61,7 @@ void	move_left(t_vars *vars);
 void	move_right(t_vars *vars);
 void	move_up(t_vars *vars);
 void	move_down(t_vars *vars);
-int		move_player_in_map(t_vars *vars, t_vector d_move);
+void	move_player_in_map(t_vars *vars, t_vector d_move);
 
 // window.c
 int		close_win(t_vars *vars);

@@ -64,6 +64,7 @@ fclean	:	clean
 	rm -f *.dylib
 	make -C $(LIB_DIR) fclean
 	make -C $(MLX_DIR) clean
+	make -C $(MLXM_DIR) clean
 
 dclean	:	fclean
 	rm -f $(DEBUG)

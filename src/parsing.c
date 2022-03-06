@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:30:43 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/05 15:28:37 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/06 20:28:20 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ void	parsing(int fd, t_vars *vars)
 	check_map_shape(vars->map, &row_length, &col_length);
 	vars->map_size.x = col_length * PIXEL;
 	vars->map_size.y = row_length * PIXEL;
-	printf("x : %d\ny : %d\n", vars->map_size.x, vars->map_size.y);
 	check_wall(vars->map, row_length, col_length);
 	check_element(vars);
 }
@@ -43,9 +42,10 @@ void	line_trans_2D(int fd, t_vars *vars)
 	vars->map = ft_split(line, '\n');
 	if (vars->map == 0)
 		error(vars->map, "vars.map is zero page!\n");
+	free(line);
 }
 
-int	find_new_line(char **line, char *buf)
+int	buf_attach_line(char **line, char *buf)
 {
 	char	*temp;
 
@@ -78,10 +78,15 @@ int	get_map_oneline(int fd, char **line)
 	r = read(fd, buf, 1);
 	while (r > 0)
 	{
-		if (!(find_new_line(line, buf)))
+		if (!(buf_attach_line(line, buf)))
+		{
+			free(buf);
+			free(*line);
 			return (-1);
+		}
 		r = read(fd, buf, 1);
 	}
+	free(buf);
 	if (r < 0)
 		return (-1);
 	else if (r == 0)

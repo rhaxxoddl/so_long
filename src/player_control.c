@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 21:37:24 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/05 15:15:19 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/06 20:29:24 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	move_left(t_vars *vars)
 
 	distance_move.x = -1;
 	distance_move.y = 0;
-	vars->num_move += move_player_in_map(vars, distance_move);
+	move_player_in_map(vars, distance_move);
 }
 
 void	move_right(t_vars *vars)
@@ -27,7 +27,7 @@ void	move_right(t_vars *vars)
 
 	distance_move.x = 1;
 	distance_move.y = 0;
-	vars->num_move += move_player_in_map(vars, distance_move);
+	move_player_in_map(vars, distance_move);
 }
 
 void	move_up(t_vars *vars)
@@ -36,7 +36,7 @@ void	move_up(t_vars *vars)
 
 	distance_move.x = 0;
 	distance_move.y = -1;
-	vars->num_move += move_player_in_map(vars, distance_move);
+	move_player_in_map(vars, distance_move);
 }
 
 void	move_down(t_vars *vars)
@@ -45,14 +45,14 @@ void	move_down(t_vars *vars)
 
 	distance_move.x = 0;
 	distance_move.y = 1;
-	vars->num_move += move_player_in_map(vars, distance_move);
+	move_player_in_map(vars, distance_move);
 }
 
 // When a moving key is pressed, the change is applied to the map
 // and the change is displayed on the screen.
 // return 1 if player can move.
 // return 0 if player can't move.
-int	move_player_in_map(t_vars *vars, t_vector d_move)
+void	move_player_in_map(t_vars *vars, t_vector d_move)
 {
 	int	*p_x;
 	int	*p_y;
@@ -62,9 +62,9 @@ int	move_player_in_map(t_vars *vars, t_vector d_move)
 	if (vars == 0)
 		error(vars->map, "Nothing game vars!\n");
 	if (d_move.x == 0 && d_move.y == 0)
-		return (0);
+		return ;
 	if (vars->map[*p_y + d_move.y][*p_x + d_move.x] == WALL)
-		return (0);
+		return ;
 	else if (vars->map[*p_y + d_move.y][*p_x + d_move.x] == COLLECTIBLE)
 		(vars->score)++;
 	else if (vars->map[*p_y + d_move.y][*p_x + d_move.x] == EXIT)
@@ -72,9 +72,9 @@ int	move_player_in_map(t_vars *vars, t_vector d_move)
 		if (all_collectible(*vars) == 1)
 			game_clear(vars, d_move);
 		else
-			return (0);
+			return ;
 	}
 	apply_player_movement(vars, d_move);
-	printf("Movement : %d\n", vars->num_move);
-	return (1);
+	printf("Movement : %d\n", ++(vars->num_move));
+	return ;
 }
