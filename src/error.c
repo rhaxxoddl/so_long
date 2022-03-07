@@ -6,11 +6,12 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/10 21:21:48 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/07 10:19:22 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/07 11:41:44 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <unistd.h>
+#include <stdio.h>
 #include <errno.h>
 #include "so_long.h"
 

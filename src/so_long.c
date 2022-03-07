@@ -6,11 +6,12 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 19:03:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/07 10:20:04 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/07 11:33:43 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <fcntl.h>
+#include <limits.h>
 #include "so_long.h"
 
 void	vars_init(t_vars *vars)
@@ -21,7 +22,7 @@ void	vars_init(t_vars *vars)
 	vars->map = 0;
 	vars->mlx = mlx_init();
 	if (vars->mlx == 0)
-		p_error(vars->map, "Failed mlx_init!");
+		p_error(0, "Failed mlx_init!");
 	vars->map_size.x = 0;
 	vars->map_size.y = 0;
 	vars->win = 0;
@@ -48,10 +49,10 @@ int	main(int argc, char **argv)
 	int		fd;
 
 	if (argc != 2)
-		error(vars.map, "Doesn't exist map!\n");
+		error(0, "Inappropriate number of parameters!");
 	fd = open(argv[1], O_RDONLY);
-	if (fd < 0)
-		p_error(vars.map, "Failed to open file!\n");
+	if (fd < 0 || fd > OPEN_MAX)
+		p_error(0, "Failed to open file!");
 	vars_init(&vars);
 	parsing(fd, &vars);
 	register_sprite(&vars);

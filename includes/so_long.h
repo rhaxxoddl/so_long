@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:22:03 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/07 10:25:27 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/07 11:37:57 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,6 @@
 # define SO_LONG_H
 
 # include <stdlib.h>
-# include <limits.h>
-# include <stdio.h>
-# include <string.h>
 # include "libft.h"
 # include "mlx.h"
 # include "key_bind.h"
@@ -52,7 +49,7 @@ int		all_collectible(t_vars vars);
 void	parsing(int fd, t_vars *vars);
 int		get_map_oneline(int fd, char **line);
 int		buf_attach_line(char **line, char *buf);
-void	line_trans_2D(int fd, t_vars *vars);
+void	line_trans_2d(int fd, t_vars *vars);
 
 // player_control.c
 void	move_left(t_vars *vars);
@@ -62,6 +59,6 @@ void	move_down(t_vars *vars);
 void	move_player_in_map(t_vars *vars, t_vector d_move);
 
 // window.c
-void	close_win(t_vars *vars);
+int		close_win(t_vars *vars);
 
 #endif

@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   player_control.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 21:37:24 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/06 20:29:24 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/07 11:42:02 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <stdio.h>
 #include "so_long.h"
 
 void	move_left(t_vars *vars)
