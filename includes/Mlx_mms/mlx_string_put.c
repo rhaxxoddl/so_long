@@ -1,5 +1,5 @@
 
-#include "mlx.h"
+#include "mlx_mms.h"
 
 #include "font.c"
 
@@ -27,7 +27,7 @@ void mlx_int_fill(unsigned char *data, int sl)
 	}
       j ++;
     }
-    
+
 }
 
 int mlx_string_put(void *mlx_ptr, void *win_ptr, int x, int y, int color, char *string)

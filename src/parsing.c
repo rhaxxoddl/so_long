@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 15:30:43 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/06 20:28:20 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/07 10:20:41 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fcntl.h>
 #include "so_long.h"
 
 void	parsing(int fd, t_vars *vars)
@@ -32,7 +33,9 @@ void	line_trans_2D(int fd, t_vars *vars)
 
 	line = 0;
 	double_newline = 0;
-	if (fd < 3 || get_map_oneline(fd, &line) != 1)
+	if (fd < 3 || fd > OPEN_MAX)
+		p_error(vars->map, "Incorrect filed descriptor");
+	if (get_map_oneline(fd, &line) != 1)
 		error(vars->map, "Failed to get map in one line!\n");
 	if (line[0] == '\n')
 		error(vars->map, "Map out of format!\n");
@@ -73,7 +76,7 @@ int	get_map_oneline(int fd, char **line)
 	int		r;
 
 	buf = (char *)ft_calloc(2, sizeof(char));
-	if (fd < 3 || fd > OPEN_MAX || line == 0 || buf == 0)
+	if (line == 0 || buf == 0)
 		return (-1);
 	r = read(fd, buf, 1);
 	while (r > 0)

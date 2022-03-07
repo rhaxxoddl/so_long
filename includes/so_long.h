@@ -3,19 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 16:22:03 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/06 20:46:41 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/07 10:25:27 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <unistd.h>
 # include <stdlib.h>
-# include <fcntl.h>
 # include <limits.h>
 # include <stdio.h>
 # include <string.h>
@@ -64,6 +62,6 @@ void	move_down(t_vars *vars);
 void	move_player_in_map(t_vars *vars, t_vector d_move);
 
 // window.c
-int		close_win(t_vars *vars);
+void	close_win(t_vars *vars);
 
 #endif

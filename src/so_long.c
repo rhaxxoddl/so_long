@@ -3,13 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/09/13 19:03:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/05 12:24:29 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/07 10:20:04 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include <fcntl.h>
 #include "so_long.h"
 
 void	vars_init(t_vars *vars)
@@ -19,6 +20,8 @@ void	vars_init(t_vars *vars)
 	vars->total_collectible = 0;
 	vars->map = 0;
 	vars->mlx = mlx_init();
+	if (vars->mlx == 0)
+		p_error(vars->map, "Failed mlx_init!");
 	vars->map_size.x = 0;
 	vars->map_size.y = 0;
 	vars->win = 0;
@@ -48,7 +51,7 @@ int	main(int argc, char **argv)
 		error(vars.map, "Doesn't exist map!\n");
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		error(vars.map, "Failed to open file!\n");
+		p_error(vars.map, "Failed to open file!\n");
 	vars_init(&vars);
 	parsing(fd, &vars);
 	register_sprite(&vars);

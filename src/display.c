@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 17:22:45 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/06 14:57:31 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/07 10:18:24 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,11 @@ void	register_sprite(t_vars *vars)
 			"./sprite/door.xpm", &width, &height);
 	vars->sprite.wall = mlx_xpm_file_to_image(vars->mlx,
 			"./sprite/wall.xpm", &width, &height);
+	if (vars->sprite.player && vars->sprite.ground && vars->sprite.feed
+		&& vars->sprite.door && vars->sprite.wall)
+		return ;
+	else
+		p_error(vars->map, "Failed ragister_sprite()!");
 }
 
 void	display_init(t_vars *vars)
@@ -41,8 +46,8 @@ void	display_init(t_vars *vars)
 	x = 0;
 	screen_width = 2500;
 	screen_height = 2500;
-	if (get_display_resolution(vars, &screen_width, &screen_height) != 0)
-		error(vars->map, "Failed to get screen resolution.");
+	if (get_display_resolution(vars, &screen_width, &screen_height) != 1)
+		p_error(vars->map, "Failed to get screen resolution.");
 	if (screen_width < vars->map_size.x || screen_height < vars->map_size.y)
 		error(vars->map,
 			"The size of the map is too large to be displayed on the screen.");
