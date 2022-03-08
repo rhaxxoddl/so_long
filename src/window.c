@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   window.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/01 09:36:47 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/06 13:15:42 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/07 11:23:34 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,12 @@
 
 int	close_win(t_vars *vars)
 {
-	mlx_destroy_window(vars->mlx, vars->win);
-	exit(0);
+	if (mlx_destroy_window(vars->mlx, vars->win) == 0)
+	{
+		free_map(vars->map);
+		exit(0);
+	}
+	else
+		p_error(vars->map, "Failed mlx_destroy_window!");
+	return (0);
 }

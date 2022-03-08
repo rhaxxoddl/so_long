@@ -8,7 +8,7 @@
 #include <fcntl.h>
 #include <string.h>
 
-#include "mlx.h"
+#include "mlx_mms.h"
 
 typedef struct  s_xpm_col
 {
