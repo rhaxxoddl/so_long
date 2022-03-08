@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/13 21:50:27 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/05 13:49:51 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/08 20:55:15 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,10 +46,10 @@ void	check_wall(char **map, int row_length, int col_length)
 		j = 0;
 		while (j < col_length)
 		{
-			if (i == 0 || i == row_length)
+			if (i == 0 || i == row_length - 1)
 				if (map[i][j] != WALL)
 					error(map, "Incorrect wall in map!\n");
-			if ((j == 0 || j == col_length) && map[i][j] != WALL)
+			if ((j == 0 || j == col_length - 1) && map[i][j] != WALL)
 				error(map, "Incorrect wall in map!\n");
 			if (check_char(map[i][j]) == 0)
 				error(map, "Incorrect element of map!\n");

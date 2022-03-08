@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   judgment.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sanjeon <sanjeon@student.42.kr>            +#+  +:+       +#+        */
+/*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/04 19:45:43 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/07 11:42:08 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/08 20:54:58 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	game_clear(t_vars *vars, t_vector d_move)
 {
 	apply_player_movement(vars, d_move);
 	printf("\\*\\*\\*\\*\\*CLEAR*/*/*/*/*/\n");
-	printf("Score : %d\n", vars->score);
 	printf("Movement : %d\n", vars->num_move);
 	close_win(vars);
 }
