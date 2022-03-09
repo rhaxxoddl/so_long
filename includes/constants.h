@@ -6,7 +6,7 @@
 /*   By: sanjeon <sanjeon@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/16 16:16:18 by sanjeon           #+#    #+#             */
-/*   Updated: 2022/03/06 13:30:20 by sanjeon          ###   ########.fr       */
+/*   Updated: 2022/03/09 19:35:33 by sanjeon          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@
 # define COLLECTIBLE 'C'
 # define EXIT 'E'
 # define PLAYER 'P'
-# define RULE_CHAR "01CEP"
 
 # define ON_DESTROY 17
 
